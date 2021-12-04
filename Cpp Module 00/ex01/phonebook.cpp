@@ -1,25 +1,15 @@
-
 #include "user.hpp"
 
-int		eval_input(std::string input)
-{
-	if (!input.compare("ADD"))
-		return (1);
-	else if (!input.compare("EXIT"))
-		return (2);
-	else if (!input.compare("SEARCH"))
-		return (3);
-	return (0);
-}
-
-void	get_input(std::string *input, std::string prompt)
+std::string	get_input(std::string prompt)
 {
 	static int i = 0;
+	std::string	input;
 
 	if (i++ != 0)
 		std::cin.ignore(10000, '\n');
 	std::cout << prompt;
-	std::cin >> *input;
+	std::cin >> input;
+	return (input);
 }
 
 void	replace_older()
@@ -27,24 +17,17 @@ void	replace_older()
 	return ;
 }
 
-void	add_command(Phonebook *users, int *index)
+void	add_command(Phonebook& user, int& index)
 {
-	std::string fName;
-	std::string lName;
-	std::string nName;
 	int number;
-	std::string sec;
 
-	if (*index == 8)
+	if (index == 8)
 		replace_older();
 	else
 	{
-		get_input(&fName, "Enter the first Name: ");
-		(*users).users[*index].setFirstName(fName);
-		get_input(&lName, "Enter the last Name: ");
-		(*users).users[*index].setLastName(lName);
-		get_input(&nName, "Enter the Nickname: ");
-		(*users).users[*index].setNickname(nName);
+		user.users[index].setFirstName(get_input("Enter the first Name: "));
+		user.users[index].setLastName(get_input("Enter the last Name: "));
+		user.users[index].setNickname(get_input("Enter the Nickname: "));
 		while (1)
 		{
 			std::cout << "Enter the Phone Number: ";
@@ -55,15 +38,14 @@ void	add_command(Phonebook *users, int *index)
 			std::cin.ignore(10000, '\n');
 			std::cout << "Wrong type of argument, try again " << std::endl;
 		}
-		(*users).users[*index].setPhone(number);
-		get_input(&sec, "Enter the Darkest Secret: ");
-		(*users).users[*index].setSecret(sec);
-		(*users).users[*index].setIndex(*index);
-		(*index)++;
+		user.users[index].setPhone(number);
+		user.users[index].setSecret(get_input("Enter the Darkest Secret: "));
+		user.users[index].setIndex(index);
+		index++;
 	}
 }
 
-void	search_command(Phonebook users, int amount)
+void	search_command(Phonebook user, int amount)
 {
 	if (!amount)
 	{
@@ -73,10 +55,10 @@ void	search_command(Phonebook users, int amount)
 	std::cout << "|    Index   |  Firstname |  Lastname  |  Nickname  |" << std::endl;
 	for (int i = 0; i < amount; i++)
 	{
-		users.users[i].printIndex();
-		users.users[i].printFirstName();
-		users.users[i].printLastName();
-		users.users[i].printNickname();
+		user.users[i].printIndex();
+		user.users[i].printFirstName();
+		user.users[i].printLastName();
+		user.users[i].printNickname();
 		std::cout << std::endl;
 	}
 }
@@ -85,26 +67,18 @@ int main(void)
 {
 	Phonebook	users;
 	std::string input;
-	int			option;
 	int			amount_of_contacts = 0;
 
 	while (1)
 	{
-		get_input(&input, "Enter a command: ");
-		std::cout << "This is the input: " << input << std::endl;
-		option = eval_input(input);
-		if (!option)
-			continue ;
-		switch (option)
-		{
-			case 1:
-				add_command(&users, &amount_of_contacts);
-				break;
-			case 2:
-				exit(0);
-			case 3:
-				search_command(users, amount_of_contacts);
-				break ;
-		}
+		input = get_input("Enter a command: ");
+		if (input.compare("ADD") == FOUND)
+			add_command(users, amount_of_contacts);
+		else if (input.compare("EXIT") == FOUND)
+			exit(0);
+		else if (input.compare("SEARCH") == FOUND)
+			search_command(users, amount_of_contacts);
+		else
+			std::cout << "Wrong Command, please try again!" << std::endl;
 	}
 }

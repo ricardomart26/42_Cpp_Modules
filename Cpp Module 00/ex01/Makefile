@@ -17,7 +17,4 @@ fclean: clean
 
 re: fclean run
 
-# test: $(NAME)
-# 	./$(NAME) < 
-
 .PHONY: all run clean fclean re
