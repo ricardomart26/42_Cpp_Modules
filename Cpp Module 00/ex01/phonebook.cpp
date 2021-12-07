@@ -1,17 +1,5 @@
 #include "user.hpp"
 
-std::string	get_input(std::string prompt)
-{
-	static int i = 0;
-	std::string	input;
-
-	if (i++ != 0)
-		std::cin.ignore(10000, '\n');
-	std::cout << prompt;
-	std::cin >> input;
-	return (input);
-}
-
 void	replace_older()
 {
 	return ;
@@ -19,30 +7,8 @@ void	replace_older()
 
 void	add_command(Phonebook& user, int& index)
 {
-	int number;
-
-	if (index == 8)
-		replace_older();
-	else
-	{
-		user.users[index].setFirstName(get_input("Enter the first Name: "));
-		user.users[index].setLastName(get_input("Enter the last Name: "));
-		user.users[index].setNickname(get_input("Enter the Nickname: "));
-		while (1)
-		{
-			std::cout << "Enter the Phone Number: ";
-			std::cin >> number;
-			if (!std::cin.fail())
-				break ;
-			std::cin.clear();
-			std::cin.ignore(10000, '\n');
-			std::cout << "Wrong type of argument, try again " << std::endl;
-		}
-		user.users[index].setPhone(number);
-		user.users[index].setSecret(get_input("Enter the Darkest Secret: "));
-		user.users[index].setIndex(index);
-		index++;
-	}
+	user.users[index].set_values(index % 8);
+	index++;
 }
 
 void	search_command(Phonebook user, int amount)
@@ -54,14 +20,20 @@ void	search_command(Phonebook user, int amount)
 	}
 	std::cout << "|    Index   |  Firstname |  Lastname  |  Nickname  |" << std::endl;
 	for (int i = 0; i < amount; i++)
-	{
-		user.users[i].printIndex();
-		user.users[i].printFirstName();
-		user.users[i].printLastName();
-		user.users[i].printNickname();
-		std::cout << std::endl;
-	}
+		user.users[i].print_search();
 }
+
+
+std::string	get_command(std::string prompt)
+{
+	std::string	input;
+
+	std::cout << prompt;
+	std::cin >> input;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	return (input);
+}
+
 
 int main(void)
 {
@@ -71,7 +43,7 @@ int main(void)
 
 	while (1)
 	{
-		input = get_input("Enter a command: ");
+		input = get_command("Enter a command: ");
 		if (input.compare("ADD") == FOUND)
 			add_command(users, amount_of_contacts);
 		else if (input.compare("EXIT") == FOUND)
