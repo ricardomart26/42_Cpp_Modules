@@ -8,12 +8,13 @@ int main(void)
 		Vai criar uma variavel automatica que vai ser destruida
 		dentro da scope da função
 	*/
-	auto_zombie();
+	Zombie::auto_zombie();
 
-	allocZombie = newZombie("Allocated BraiiiiiiinnnnzzzzZ...");
+	allocZombie = Zombie::newZombie("Allocated BraiiiiiiinnnnzzzzZ...");
 
 	allocZombie->annouce();
 	delete allocZombie;
 
-	randomChump("teste");
+	Zombie::randomChump("teste");
 }
+

@@ -1,20 +1,10 @@
 #include "Zombie.hpp"
 
-
 int main(void)
 {
-	Zombie *allocZombie;
+	Zombie *horde = Zombie::zombieHorde(10, "Ricardo");
 
-	/* 
-		Vai criar uma variavel automatica que vai ser destruida
-		dentro da scope da função
-	*/
-	auto_zombie();
-
-	allocZombie = Zombie::newZombie("Allocated BraiiiiiiinnnnzzzzZ...");
-
-	allocZombie->annouce();
-	delete allocZombie;
-
-	Zombie::randomChump("teste");
+	for (int i = 0; i < 10; i++)
+		horde[i].annouce();
+	delete[] horde;
 }

@@ -6,27 +6,16 @@
 class Zombie {
 	public:
 
-		Zombie(std::string zombie_name)
-			: name(zombie_name)
-		{
-			std::cout << "Created " << name << " Zombie!" << std::endl; 
-		}
+		Zombie();
+		~Zombie();
 
-		~Zombie()
-		{
-			std::cout << "Destroyed " << name << std::endl; 
-		}
-
-		void	annouce()
-		{
-			std::cout << "My name is " << name  << std::endl; 
-		}
+		void	annouce(void);
+		void	set_name(std::string name);
+		static	Zombie* zombieHorde( int N, std::string name);
 	private:
-		std::string name;
+		std::string p_name;
 
 };
 
-void	auto_zombie(void);
-Zombie* zombieHorde( int N, std::string name );
 
 #endif
