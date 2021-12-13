@@ -2,7 +2,9 @@ CC = g++ -Wall -Wextra -Werror -std=c++98
 
 INCLUDE = -I.
 
-SRC = main.cpp newZombie.cpp Zombie.cpp randomChump.cpp
+NAME = Army
+
+SRC = HumanA.cpp HumanB.cpp main.cpp Weapon.cpp
 
 OBJ = $(SRC:%.c=%.o)
 
@@ -12,10 +14,10 @@ OBJ = $(SRC:%.c=%.o)
 all: main
 
 main: $(OBJ)
-	$(CC) $(OBJ) $(INCLUDE) -o Zombie
+	$(CC) $(OBJ) $(INCLUDE) -o $(NAME)
 
 clean:
-	rm Zombie
+	rm $(NAME)
 
 re: clean all
 

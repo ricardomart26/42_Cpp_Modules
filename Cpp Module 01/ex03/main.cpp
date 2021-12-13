@@ -10,6 +10,8 @@ int main(void)
 
 		HumanA bob("Bob", club);
 		bob.atack();
+		club.setType("Another type of club");
+		bob.atack();
 	}
 	{
 		Weapon	club = Weapon("crude spiked club");
