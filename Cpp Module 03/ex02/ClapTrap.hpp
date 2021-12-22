@@ -8,6 +8,7 @@ class ClapTrap
     public:
 
         ClapTrap();
+        ClapTrap(const std::string &name, int hit, int energy, int Damage);
         ~ClapTrap();
         ClapTrap(const ClapTrap& copy);
         ClapTrap(std::string name);

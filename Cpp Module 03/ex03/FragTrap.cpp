@@ -9,3 +9,8 @@ FragTrap::~FragTrap()
 {
     std::cout << "Frag Trap <" << getName() << "> destructor init" << std::endl;
 }
+
+void    FragTrap::highFivesGuys(void)
+{
+    std::cout << "Give me a high five you beautifull guy!" << std::endl;
+}
