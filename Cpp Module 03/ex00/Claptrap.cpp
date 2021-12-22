@@ -19,18 +19,30 @@ ClapTrap::ClapTrap(const ClapTrap& copy)
 
 void    ClapTrap::attack(std::string const & target)
 {
-    std::cout << "Claptrap " << this->_name << " attack " << target << ", causing " 
-    << this->_attackDamage << " points of damage!" << std::endl; 
+    std::cout << "Claptrap " << _name << " attack " << target << ", causing " 
+    << _attackDamage << " points of damage!" << std::endl; 
 }
 
 void    ClapTrap::takeDamage(unsigned int amount)
 {
-    std::cout << "Claptrap " << this->_name << " took Damage, received " 
-    << amount << " points of damage!" << std::endl; 
+    if (_energyPoints - amount <= 0)
+    {
+        std::cout << "ClapTrap <" << _name << "> his dead!";
+        return ;
+    }
+    _energyPoints -= amount;
+    std::cout << "Claptrap <" << _name << "> took Damage, received " 
+    << amount << " points of damage, has now " << _energyPoints << "!" << std::endl; 
 }
 
 void    ClapTrap::beRepaired(unsigned int amount)
 {
-    std::cout << "Claptrap " << this->_name << " repaired damage, received " 
-    << amount << " points of life!" << std::endl; 
+    if (_energyPoints < 0)
+    {
+        std::cout << "ClapTrap <" << _name << "> his dead, cannot be repaired!";
+        return ;
+    }
+    _energyPoints += amount;
+    std::cout << "Claptrap " << _name << " repaired damage, received " 
+    << amount << " points of life, has now " << _energyPoints << "!" << std::endl; 
 }
