@@ -19,15 +19,36 @@
  * * (Person) 
  */
 
-DiamondTrap::DiamondTrap(std::string name) : FragTrap(name), ScavTrap(name), ClapTrap(name)
+DiamondTrap::DiamondTrap(std::string name)
 {
+	std::cout << "Diamond Trap initialized!" << std::endl;
+	setName(name);
+	setHit(FragTrap::getHit());
+	setEnergy(ScavTrap::getEnergy());
+	setAttack(FragTrap::getAttack());
+	ClapTrap::setName("Claptrap OBJ");
+}
+
+DiamondTrap::DiamondTrap(const DiamondTrap &copy)
+{
+	this->setName(copy.getName());
+	this->setHit(copy.getHit()); 
+	this->setEnergy(copy.getEnergy()); 
+	this->setAttack(copy.getAttack());
+	this->ClapTrap::setName(copy.ClapTrap::getName());
+
 }
 
 /**
  * TODO: Get ClapTrap Name!
  */
 
-void    DiamondTrap::whoAmI()
+void	DiamondTrap::whoAmI()
 {
-    std::cout << "My name <" << _name << "> and my Claptrap name <>." << std::endl; 
+	std::cout << "My name <" << _name << "> and my Claptrap name <>." << std::endl; 
+}
+
+void		DiamondTrap::attack(std::string const & target)
+{
+	ScavTrap::attack(target);
 }

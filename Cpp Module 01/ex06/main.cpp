@@ -1,4 +1,7 @@
 #include "Karen.hpp"
+#include <map>
+
+typedef void	(Karen::*func_ptr[]) (void);
 
 int main(int ac, char **av)
 {
