@@ -2,7 +2,7 @@ NAME = AMateria
 
 CC = g++ -Wall -Werror -Wextra -pedantic -std=c++98
 
-SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp ICharacter.cpp
+SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp ICharacter.cpp Character.cpp
 
 all: $(NAME)
 
