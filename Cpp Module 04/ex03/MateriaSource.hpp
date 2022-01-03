@@ -2,10 +2,11 @@
 #define MATERIASOURCE_HPP
 
 #include "AMateria.hpp"
+#include "IMateriaSource.hpp"
 
 #define SIZE 4
 
-class MateriaSource
+class MateriaSource : public IMateriaSource
 {
 	public:
 

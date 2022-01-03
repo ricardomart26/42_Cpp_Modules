@@ -2,6 +2,7 @@
 #define CHARACTER_HPP
 
 #include "ICharacter.hpp"
+#include "AMateria.hpp"
 
 #define SIZE 4
 
@@ -19,10 +20,10 @@ class Character : public ICharacter
 		~Character();
 		Character & operator=(const Character &obj);
 
-		std::string const & getName() const = 0;
-		void equip(AMateria* m) = 0;
-		void unequip(int idx) = 0;
-		void use(int idx, ICharacter& target) = 0;
+		std::string const & getName() const;
+		void equip(AMateria* m);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
 
 	private:
 

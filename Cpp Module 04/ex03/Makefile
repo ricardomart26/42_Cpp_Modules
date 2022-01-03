@@ -1,8 +1,8 @@
 NAME = AMateria
 
-CC = g++ -Wall -Werror -Wextra -pedantic -std=c++98
+CC = clang++ -Wall -Werror -Wextra -pedantic -std=c++98
 
-SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp ICharacter.cpp Character.cpp
+SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp ICharacter.cpp Character.cpp IMateriaSource.cpp MateriaSource.cpp
 
 all: $(NAME)
 
