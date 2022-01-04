@@ -1,4 +1,5 @@
 #include "Cure.hpp"
+#include <iostream>
 
 Cure::Cure() : AMateria("cure")
 {

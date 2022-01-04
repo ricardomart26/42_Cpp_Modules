@@ -2,12 +2,6 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
-/**
- * TODO: Check if Destructor is reverse order in ScavTrap and FragTrap
- * ! Already Done, Nice work
- * 
- */ 
-
 int main(void)
 {
     ClapTrap    ricardo("Ricardo");

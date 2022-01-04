@@ -21,7 +21,7 @@ int main()
 		std::cout << "type of dogPtr: " << dogPtr->getType() << " " << std::endl;
 		std::cout << "type of catPtr: " << catPtr->getType() << " " << std::endl;
 
-		dogPtr->makeSound(); // will output the cat sound!
+		dogPtr->makeSound(); // will output the dog sound!
 		catPtr->makeSound(); // will output the cat sound!
 
 		meta->makeSound();

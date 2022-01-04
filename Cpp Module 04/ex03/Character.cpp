@@ -1,4 +1,5 @@
 #include "Character.hpp"
+#include <iostream>
 
 Character::Character()
 {

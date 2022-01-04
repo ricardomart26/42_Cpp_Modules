@@ -1,8 +1,9 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
-#include "ICharacter.hpp"
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
+#include <iostream>
 
 #define SIZE 4
 
@@ -29,6 +30,7 @@ class Character : public ICharacter
 
 		std::string	_name;
 		AMateria*	_materia[SIZE];
+
 };
 
 #endif

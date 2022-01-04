@@ -3,6 +3,7 @@
 
 #include "AMateria.hpp"
 #include "IMateriaSource.hpp"
+#include <iostream>
 
 #define SIZE 4
 
