@@ -4,17 +4,20 @@
 #include <iostream>
 #include <exception>
 
-class Bureaucrat : public std::exception
+class Bureaucrat
 {
 	public:
 
+		Bureaucrat();
 		Bureaucrat(const std::string name, int grade);
+		Bureaucrat &operator=(const Bureaucrat& obj);
 
 		const std::string	getName();
 		int					getGrade();
-
-		const char *GradeTooHighException();
-		const char *GradeTooLowException();
+		void				GradeTooHighException();
+		void				GradeTooLowException();
+		void				IncreaseGrade();
+		void				DecreaseGrade();
 
 	private:
 

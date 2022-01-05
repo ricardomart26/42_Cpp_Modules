@@ -1,6 +1,6 @@
 NAME = Bureaucrat
 
-CC = c++ -Wall -Werror -Wextra -pedantic -std=c++98
+CC = clang++ -Wall -Werror -Wextra -pedantic -std=c++98
 
 SRC = main.cpp Bureaucrat.cpp
 

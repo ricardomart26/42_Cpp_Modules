@@ -2,8 +2,13 @@
 
 int main(void)
 {
-	Bureaucrat("Ricardo", 1);
-	Bureaucrat("Vanessa", 250);
-
+	Bureaucrat Ricardo("Ricardo", 1);
+	Bureaucrat Vanessa("Vanessa", 250);
+	
+	std::cout << "Saiu?\n";
+	Ricardo.DecreaseGrade();
+	std::cout << "My grade is: " << Ricardo.getGrade() << '\n';
+	Ricardo.DecreaseGrade();
+	std::cout << "My grade is: " << Ricardo.getGrade() << '\n';
 	return (0);
 }
