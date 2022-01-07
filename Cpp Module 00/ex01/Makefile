@@ -1,20 +1,17 @@
-CC = c++ -Wall -Wextra -Werror -std=c++98 -pedantic
+CC = clang++ -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
 
-SRC = megaphone.cpp
+SRC = Contact.cpp Phonebook.cpp
 
-NAME = megaphone
+NAME = Phonebook
 
-all: run
+all: $(NAME)
 
-run:
-	$(CC) megaphone.cpp -o $(NAME)
+$(NAME):
+	$(CC) $(SRC) -o $(NAME)
 
 clean:
-	rm -f *.o
+	test -s $(NAME) | rm $(NAME)
 
-fclean: clean
-	rm -f $(NAME)
+re: clean $(NAME)
 
-re: fclean run
-
-.PHONY: all run clean fclean re
+.PHONY: all clean re

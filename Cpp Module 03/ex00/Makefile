@@ -1,19 +1,17 @@
-CC = g++ -Wall -Werror -Wextra -pedantic -std=c++98
+CC = clang++ -Wall -Werror -Wextra -pedantic -std=c++98 -fsanitize=address
 
 SRC = ClapTrap.cpp main.cpp
-
-OBJ = $(SRC:.c=.o)
 
 NAME = ClapTrap
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+$(NAME):
+	$(CC) $(SRC) -o $(NAME)
 
 clean:
-	rm $(NAME)
+	test -s $(NAME) | rm $(NAME)
 
 re: clean all
 
-.PHONY = all clean re
+.PHONY: all clean re

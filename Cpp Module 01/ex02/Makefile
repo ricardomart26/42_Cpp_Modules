@@ -1,20 +1,17 @@
-CC = g++ -Wall -Wextra -Werror -std=c++98
+CC = clang++ -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
 
 SRC = main.cpp
 
-OBJ = $(SRC:%.c=%.o)
+NAME = ptr_ref
 
-%cpp.o : %cpp
-	$(CC) -c $<
+all: $(NAME)
 
-all: main
-
-main: $(OBJ)
-	$(CC) $(OBJ) -o ptr_ref
+$(NAME): $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
 clean:
-	rm ptr_ref
+	test -s $(NAME) | rm $(NAME)
 
 re: clean all
 
-.PHONY: all main clean re
+.PHONY: all clean re

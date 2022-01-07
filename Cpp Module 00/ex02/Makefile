@@ -1,8 +1,8 @@
-NAME = Bureaucrat
+NAME = GlobalBanksters
 
 CC = clang++ -Wall -Werror -Wextra -pedantic -std=c++98 -fsanitize=address
 
-SRC = main.cpp Bureaucrat.cpp
+SRC = tests.cpp Account.cpp
 
 all: $(NAME)
 

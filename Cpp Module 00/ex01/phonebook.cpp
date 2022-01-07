@@ -1,9 +1,4 @@
-#include "user.hpp"
-
-void	replace_older()
-{
-	return ;
-}
+#include "Contact.hpp"
 
 void	add_command(Phonebook& user, int& index)
 {
@@ -11,14 +6,15 @@ void	add_command(Phonebook& user, int& index)
 	index++;
 }
 
-void	search_command(Phonebook user, int amount)
+void	search_command(Phonebook &user, int amount) // Utilizei o & para nao passar o objeto inteiro e nao destuir o objeto
 {
 	if (!amount)
 	{
-		std::cout << "Users is empty, add one to show the list" << std::endl;
+		std::cout << "Users is empty, add one to show the list\n";
 		return ;
 	}
-	std::cout << "|    Index   |  Firstname |  Lastname  |  Nickname  |" << std::endl;
+	std::cout << "Amount: " << amount << '\n';
+	std::cout << "|    Index   |  Firstname |  Lastname  |  Nickname  |\n";
 	for (int i = 0; i < amount; i++)
 		user.users[i].print_search();
 }
@@ -30,7 +26,7 @@ std::string	get_command(std::string prompt)
 
 	std::cout << prompt;
 	std::cin >> input;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora 
 	return (input);
 }
 
@@ -39,8 +35,9 @@ int main(void)
 {
 	Phonebook	users;
 	std::string input;
-	int			amount_of_contacts = 0;
+	int			amount_of_contacts;
 
+	amount_of_contacts = 0;
 	while (1)
 	{
 		input = get_command("Enter a command: ");
@@ -51,6 +48,6 @@ int main(void)
 		else if (input.compare("SEARCH") == FOUND)
 			search_command(users, amount_of_contacts);
 		else
-			std::cout << "Wrong Command, please try again!" << std::endl;
+			std::cout << "Wrong Command, please try again!\n";
 	}
 }

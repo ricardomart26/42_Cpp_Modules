@@ -1,24 +1,17 @@
-CC = g++ -Wall -Wextra -Werror -std=c++98
-
-INCLUDE = -I.
+CC = clang++ -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
 
 NAME = Karen
 
 SRC = main.cpp Karen.cpp
 
-OBJ = $(SRC:%.c=%.o)
+all: $(NAME)
 
-%cpp.o : %cpp
-	$(CC) $(INCLUDE) -c $<
-
-all: main
-
-main: $(OBJ)
-	$(CC) $(OBJ) $(INCLUDE) -o $(NAME)
+$(NAME):
+	$(CC) $(SRC) -o $(NAME)
 
 clean:
-	rm $(NAME)
+	test -s $(NAME) | rm $(NAME)
 
 re: clean all
 
-.PHONY: all main clean re
+.PHONY: all clean re

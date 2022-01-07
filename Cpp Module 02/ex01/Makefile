@@ -1,22 +1,17 @@
 NAME = FixedPoint
 
-CC = g++ -Wall -Wextra -Werror
+CC = clang++ -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
 
 SRC = Fixed.cpp main.cpp
 
-OBJ = $(SRC:.c=.o)
-
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+$(NAME):
+	$(CC) $(SRC) -o $(NAME)
 
 clean:
-	rm *.o
+	test -s $(NAME) | rm $(NAME)
 
-fclean: clean
-	rm $(NAME)
+re: clean all
 
-re: fclean all
-
-.PHONY: all clean fclean re
+.PHONY: all clean re
