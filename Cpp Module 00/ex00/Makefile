@@ -10,8 +10,8 @@ $(NAME):
 	$(CC) $(SRC) -o $(NAME)
 
 clean:
-	test -s $(NAME) | rm -f $(NAME)
+	test ! -s $(NAME) || rm -f $(NAME)
 
-re: fclean all
+re: clean all
 
 .PHONY: all clean re

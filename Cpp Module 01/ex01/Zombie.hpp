@@ -7,13 +7,16 @@ class Zombie {
 	public:
 
 		Zombie();
+		Zombie(std::string name);
 		~Zombie();
 
 		void	annouce(void);
 		void	set_name(std::string name);
-		static	Zombie* zombieHorde( int N, std::string name);
+		Zombie* zombieHorde( int N, std::string name);
+
 	private:
-		std::string p_name;
+
+		std::string _name;
 
 };
 

@@ -1,10 +1,8 @@
 #include "Zombie.hpp"
 
-Zombie	*Zombie::newZombie(std::string name)
+Zombie	*newZombie(std::string name)
 {
-	Zombie *alloczombie = new Zombie;
+	Zombie *alloczombie = new Zombie(name);
 
-	alloczombie->set_name(name);
-	alloczombie->annouce();
 	return (alloczombie);
 }

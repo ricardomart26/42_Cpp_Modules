@@ -2,24 +2,19 @@
 
 Zombie::Zombie()
 {
-	std::cout << "Created Zombie " << p_name << "!" << std::endl;
+	_name = "Empty";
+	std::cout << "Created Zombie " << _name << "!" << std::endl;
+}
+
+Zombie::Zombie(std::string name) : _name(name)
+{
+	std::cout << "Created Zombie " << _name << "!" << std::endl;
 }
 
 Zombie::~Zombie()
 {
-	std::cout << "Destroyed Zombie " << p_name << "!" << std::endl;
+	std::cout << "Destroyed Zombie " << _name << "!" << std::endl;
 }
-
-void	Zombie::set_name(std::string name)
-{ p_name = name; }
 
 void	Zombie::annouce(void)
-{ std::cout << "Here comes the " << p_name << std::endl; }
-
-void	auto_zombie(void)
-{
-	Zombie zombie;
-
-	zombie.set_name("BraiiiiinnnzzZ...");
-	zombie.annouce();
-}
+{ std::cout << "Here comes the " << _name << std::endl; }

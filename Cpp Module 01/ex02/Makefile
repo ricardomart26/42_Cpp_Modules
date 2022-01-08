@@ -6,11 +6,11 @@ NAME = ptr_ref
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+$(NAME):
+	$(CC) $(SRC) -o $(NAME)
 
 clean:
-	test -s $(NAME) | rm $(NAME)
+	test ! -s $(NAME) || rm $(NAME)
 
 re: clean all
 

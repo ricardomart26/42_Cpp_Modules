@@ -10,7 +10,7 @@ $(NAME):
 	$(CC) $(SRC) -o $(NAME)
 
 clean:
-	test -s $(NAME) | rm $(NAME)
+	test ! -s $(NAME) || rm $(NAME)
 
 re: clean all
 

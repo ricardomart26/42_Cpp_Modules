@@ -1,8 +1,10 @@
 #include "Zombie.hpp"
 
+Zombie* zombieHorde(int N, std::string name);
+
 int main(void)
 {
-	Zombie *horde = Zombie::zombieHorde(10, "Ricardo");
+	Zombie *horde = zombieHorde(10, "Ricardo");
 
 	for (int i = 0; i < 10; i++)
 		horde[i].annouce();

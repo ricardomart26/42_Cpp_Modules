@@ -1,20 +1,17 @@
 #include "Zombie.hpp"
 
+Zombie	*newZombie(std::string name);
+void	randomChump(std::string name);
+
 int main(void)
 {
-	Zombie *allocZombie;
-
-	/* 
-		Vai criar uma variavel automatica que vai ser destruida
-		dentro da scope da função
-	*/
-	Zombie::auto_zombie();
-
-	allocZombie = Zombie::newZombie("Allocated BraiiiiiiinnnnzzzzZ...");
-
+	Zombie *allocZombie = newZombie("Allocated BraiiiiiiinnnnzzzzZ...");
 	allocZombie->annouce();
 	delete allocZombie;
 
-	Zombie::randomChump("teste");
+	Zombie stackZombie("teste stack");
+
+	stackZombie.annouce();
+	randomChump("teste");
 }
 

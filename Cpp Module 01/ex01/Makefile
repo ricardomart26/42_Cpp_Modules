@@ -1,4 +1,4 @@
-CC = g++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -pedantic
+CC = clang++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -pedantic
 
 NAME = Horde
 
@@ -10,7 +10,7 @@ $(NAME):
 	$(CC) $(SRC) -o $(NAME)
 
 clean:
-	test -s $(NAME) | rm $(NAME)
+	test ! -s $(NAME) || rm $(NAME)
 
 re: clean all
 
