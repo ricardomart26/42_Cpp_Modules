@@ -13,5 +13,6 @@ int main(void)
 
 	stackZombie.annouce();
 	randomChump("teste");
+	return ( 0 );
 }
 

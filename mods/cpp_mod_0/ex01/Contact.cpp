@@ -1,4 +1,6 @@
 #include "Contact.hpp"
+#include <string>
+#include <string.h>
 
 Contact::Contact()
 {
@@ -30,7 +32,6 @@ std::string	Contact::get_input(const std::string& prompt)
     return (input);
 }
 
-
 void    Contact::set_values(int i)
 {
     char str[MAX_NUMBER_SIZE];
@@ -47,10 +48,17 @@ void    Contact::set_values(int i)
         std::cin.clear();
         std::cin.ignore(10000, '\n');
         try {
-            std::stoi(str, &_phoneNumber);
+            size_t i = 0;
+            for (; i < strlen(str); i++)
+            {
+                if (str[i] >= 48 && str[i] <= 57)
+                    continue;
+                throw (1);
+            }
+            _phoneNumber = std::atoi(str);
         }
-        catch (const std::invalid_argument& ia) {
-            std::cerr << "Should be a number" << ia.what() << std::endl;
+        catch (...) {
+            std::cerr << "Should be a number" << std::endl;
             continue ;
         }
         break ;

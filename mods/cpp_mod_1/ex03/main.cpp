@@ -21,4 +21,5 @@ int main(void)
 		club.setType("some other type of club");
 		jim.atack();
 	}
+	return ( 0 );
 }

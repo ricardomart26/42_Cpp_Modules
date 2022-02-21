@@ -5,16 +5,14 @@
 
 class HumanA
 {
-	
+
 	public:
+		HumanA();
+		HumanA( const std::string& name, Weapon& weapon );
 
-		HumanA::HumanA();
-		HumanA(const std::string& name, Weapon& weapon);
-
-		void	atack();
+		void	atack( void );
 
 	private:
-	
 		std::string	_name;
 		Weapon&		_weapon;
 

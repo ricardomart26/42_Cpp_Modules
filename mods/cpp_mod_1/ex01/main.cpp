@@ -9,4 +9,5 @@ int main(void)
 	for (int i = 0; i < 10; i++)
 		horde[i].annouce();
 	delete[] horde;
+	return ( 0 );
 }

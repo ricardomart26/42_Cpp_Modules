@@ -1,4 +1,5 @@
 #include "Contact.hpp"
+#include "Phonebook.hpp"
 
 void	add_command(Phonebook& user, int& index)
 {
@@ -20,7 +21,7 @@ void	search_command(Phonebook &user, int amount) // Utilizei o & para nao passar
 }
 
 
-std::string	get_command(std::string prompt)
+std::string	get_command(const std::string& prompt)
 {
 	std::string	input;
 

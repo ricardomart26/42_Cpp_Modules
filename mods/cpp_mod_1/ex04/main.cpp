@@ -7,16 +7,24 @@ int	strstr(std::string src, std::string find)
 	int	x;
 
 	i = 0;
+	std::cout << "src: " << src << std::endl;
+	std::cout << "find: " << find << std::endl;
+
 	while (src[i])
 	{
+		std::cout << "src[" << i << "]: " << src[i] << std::endl;
 		x = 0;
 		if (src[i] == find[x])
 		{
-			while (src[i++] == find[x++])
+			while (src[i] && find[x] && src[i++] == find[x++])
+			{
+				std::cout << i << std::endl;
 				if (x == (int)find.size())
 					return (i - x);
+			}
 		}
-		i++;
+		if (src[i])
+			i++;
 	}
 	return (-1);
 }

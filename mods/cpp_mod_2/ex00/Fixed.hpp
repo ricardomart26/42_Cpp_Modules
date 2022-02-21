@@ -1,3 +1,6 @@
+#ifndef FIXED_HPP
+#define FIXED_HPP
+
 #include <iostream>
 
 class Fixed
@@ -7,14 +10,16 @@ class Fixed
 		Fixed();
 		Fixed(const Fixed& copy);
 		~Fixed();
-		Fixed & operator = (const Fixed &a);
+		Fixed	&operator = ( const Fixed &a );
 
-		int		getRawBits(void) const; // Retorna o valor raw do fixed point
-		void	setRawBits(const int raw); // Define o raw value do fixed point
+		int		getRawBits( void ) const; // Retorna o valor raw do fixed point
+		void	setRawBits( const int raw ); // Define o raw value do fixed point
 
 	private:
 
-	int					_fixedPoint;
-	const static int	_staticPoint = 8;
+		int					_fixedPoint;
+		const static int	_staticPoint = 8;
 
 };
+
+#endif

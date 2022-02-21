@@ -1,6 +1,6 @@
 CC = clang++ -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
 
-SRC = Contact.cpp Phonebook.cpp
+SRC = main.cpp Contact.cpp
 
 NAME = Phonebook
 
