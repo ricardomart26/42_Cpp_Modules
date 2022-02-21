@@ -1,5 +1,5 @@
-#ifndef ITER_HPP
-#define ITER_HPP
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
 
 #include <iostream>
 #include <exception>
@@ -29,9 +29,10 @@ class Array
 
 };
 
+// Constructors, Destructers and copy Constructor
 
 template <class T>
-Array<T>::Array() : _size( 0 )
+Array<T>::Array()
 {
 	_arr = new T[0];
 }
@@ -47,7 +48,7 @@ Array<T>::Array(unsigned int n) : _size( n )
 template <class T>
 Array<T>::~Array()
 {
-	delete[]	_arr;
+	delete _arr;
 }
 
 template <class T>
@@ -58,9 +59,10 @@ Array<T>::Array(const Array &copy)
 	for (int i = 0; i < copy._size; i++)
 		_arr[i] = copy->_arr[i];
 }
+// Operator Overload
 
 template <class T>
-Array<T>	&Array<T>::operator= (const Array &rhs)
+Array<T>	&Array<T>::operator = (const Array &rhs)
 {
 	if (this == &rhs)
 		return ( *this );
@@ -79,6 +81,8 @@ T	&Array<T>::operator[] (const int loc)
 	return ( _arr[loc] );
 }
 
+// Member Functions
+
 template <class T>
 int	Array<T>::getSize( void )
 {
@@ -90,6 +94,8 @@ T	*Array<T>::getArray( void )
 {
 	return	( _arr );
 }
+
+// Exception Functions
 
 template <class T>
 const char	*Array<T>::indexOutOfRange::what() const throw()
