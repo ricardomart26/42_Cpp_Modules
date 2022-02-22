@@ -3,8 +3,7 @@
 
 int main( void )
 {
-    std::array<int, 5> arr = {0, 1, 2, 3, 4};
-    easyfind<std::array<int, 5>>valor(arr, 3);
-
+    std::array<int, 6> arr = {1, 2, 3, 4, 5, 6};
+    std::cout << easyfind(arr, 9) << std::endl;
     return ( 0 );
 }

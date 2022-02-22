@@ -1,5 +1,7 @@
 #include "Converter.hpp"
 
+// Need copy constructor
+
 Converter::Converter()
 {
 
@@ -18,18 +20,18 @@ Converter::Converter(const std::string &str)
 		for (size_t i = 0; i < _conv.length(); i++)
 		{
 			if (i == 0 && !isdigit(_conv[i]))
-				break;
+				break ;
 			else
 			{
 				if (isalpha(_conv[i]) && _conv[i] != 'f')
 				{
 					_conv = "fy";
-					break;
+					break ;
 				}
 				else if (_conv[i] == 'f' && i + 1 != _conv.length())
 				{
 					_conv = "fy";
-					break;
+					break ;
 				}
 			}
 		}
@@ -45,7 +47,6 @@ Converter::Converter(const Converter &copy)
 const Converter &Converter::operator=(const Converter &rhs)
 {
 	return (rhs);
-	
 }
 
 Converter::~Converter()
@@ -126,12 +127,12 @@ void	Converter::displayFloat()
 void	Converter::displayDouble()
 {
 	if (_sw == 1)
-		std::cout << std::fixed << std::setprecision(1) << "double: " << static_cast<double>(_convC) << std::endl; 
+		std::cout << std::fixed << "double: " << static_cast<double>(_convC) << std::endl; 
 	else
 	{
 		try {
 			double d = std::stod(_conv);
-			std::cout << std::fixed << std::setprecision(1) << "double: " << d << std::endl;
+			std::cout << std::fixed << "double: " << d << std::endl;
 		}
 		catch (...)
 		{

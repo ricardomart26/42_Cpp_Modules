@@ -9,6 +9,10 @@ MateriaSource::MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource &copy)
 {
+	if (_materia[0] == NULL)
+	{
+
+	}
 	for (int i = 0; i < SIZE; i++)
 		delete this->_materia[i];
 	for (int i = 0; i < SIZE && copy._materia[i]; i++)
