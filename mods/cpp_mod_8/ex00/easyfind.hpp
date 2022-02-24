@@ -5,32 +5,34 @@
 #include <array>
 #include <iostream>
 
-class numberNotFound : public std::exception
-{
-
-};
+// class numberNotFound : public std::exception
+// {
+//     const char *what() const throw();
+// };
 
 template <typename T>
-bool    easyfind(T arr, int wanted)
+void    easyfind(T arr, int wanted)
 {
     int lp = 0; // left position
     int rp = arr.size() - 1;
     int half_size = arr.size() / 2;
     
     std::sort(arr.begin(), arr.end());
-    while (1)
-    {
-        if (arr[half_size] == wanted)
-            return (true);
-        else if (arr[half_size] > wanted)
-            rp = half_size - 1;
-        else if (arr[half_size] < wanted)
-            lp = half_size + 1;
-        half_size = (rp + lp) / 2;
-        if (rp < lp)
-            break ;
+    try {
+        while (rp >= lp)
+        {
+            if (arr[half_size] == wanted)
+                return ;
+            else if (arr[half_size] > wanted)
+                rp = half_size - 1;
+            else if (arr[half_size] < wanted)
+                lp = half_size + 1;
+            half_size = (rp + lp) / 2;
+        }
+        throw 1;
+    } catch (...) {
+        std::cout << "No number " << wanted << " in array\n";
     }
-    throw 
 }
 
 // template <class T>
