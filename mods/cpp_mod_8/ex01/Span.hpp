@@ -1,6 +1,10 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
+#include <iostream>
+#include <exception>
+#include <cmath>
+
 class Span 
 {
 
@@ -10,8 +14,17 @@ class Span
         ~Span();
         Span    &operator = (const Span &rhs);
         void    addNumber(int number);
-        void    shortestSpan();
-        void    longestSpan();
+        int    shortestSpan();
+        int    longestSpan();
+
+        class noSpaceInArray : public std::exception
+        {
+            const char *what() const throw();
+        };
+        class needsMoreElem : public std::exception
+        {
+            const char *what() const throw();
+        };
 
     private:
         int _n;

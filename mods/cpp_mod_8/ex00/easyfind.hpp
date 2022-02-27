@@ -4,6 +4,7 @@
 #include <exception>
 #include <array>
 #include <iostream>
+#include <algorithm>
 
 // class numberNotFound : public std::exception
 // {
@@ -13,26 +14,32 @@
 template <typename T>
 void    easyfind(T arr, int wanted)
 {
-    int lp = 0; // left position
-    int rp = arr.size() - 1;
-    int half_size = arr.size() / 2;
+    // int lp = 0; // left position
+    // int rp = arr.size() - 1;
+    // int half_size = arr.size() / 2;
     
-    std::sort(arr.begin(), arr.end());
-    try {
-        while (rp >= lp)
-        {
-            if (arr[half_size] == wanted)
-                return ;
-            else if (arr[half_size] > wanted)
-                rp = half_size - 1;
-            else if (arr[half_size] < wanted)
-                lp = half_size + 1;
-            half_size = (rp + lp) / 2;
-        }
-        throw 1;
-    } catch (...) {
-        std::cout << "No number " << wanted << " in array\n";
-    }
+    if (std::find(arr.begin(), arr.end(), wanted) != arr.end())
+        std::cout << "Found number\n";
+    else
+        std::cout << "Didnt't find number\n";
+    // std::sort(arr.begin(), arr.end());
+    // if (std::binary_search(arr.begin(), arr.end(), wanted))
+
+    // try {
+    //     while (rp >= lp)
+    //     {
+    //         if (arr[half_size] == wanted)
+    //             return ;
+    //         else if (arr[half_size] > wanted)
+    //             rp = half_size - 1;
+    //         else if (arr[half_size] < wanted)
+    //             lp = half_size + 1;
+    //         half_size = (rp + lp) / 2;
+    //     }
+    //     throw 1;
+    // } catch (...) {
+    //     std::cout << "No number " << wanted << " in array\n";
+    // }
 }
 
 // template <class T>
