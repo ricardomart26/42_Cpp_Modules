@@ -16,9 +16,9 @@ bool	is_upper_char(char c)
 	return (false);
 }
 
-bool	is_char(char c)
+bool	is_char_or_space(char c)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122) || c == 32)
 		return (true);
 	return (false);
 }
@@ -33,12 +33,12 @@ int main(int ac, char *av[])
 		{
 			for (int j = 0; j < len(av[i]); j++)
 			{
-				if (is_upper_char(av[i][j]) || !is_char(av[i][j]))
+				if (is_upper_char(av[i][j]) || !is_char_or_space(av[i][j]))
 					std::cout << char(av[i][j]);
 				else
 					std::cout << char(av[i][j] - 32);
-				
 			}
+			std::cout << ' ';
 		}
 		std::cout << '\n';
 	}

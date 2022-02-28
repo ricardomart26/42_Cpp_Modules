@@ -22,7 +22,6 @@ class PresidentialPardonForm: public Form
 
 	private:
 		std::string _target;
-
 };
 
 #endif
