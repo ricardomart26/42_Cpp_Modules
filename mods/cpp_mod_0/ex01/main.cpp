@@ -7,7 +7,7 @@ void	add_command(Phonebook& user, int& index)
 	index++;
 }
 
-void	search_command(Phonebook user, int amount) // Utilizei o & para nao passar o objeto inteiro e nao destuir o objeto
+void	search_command(Phonebook& user, int amount) // Utilizei o & para nao passar o objeto inteiro e nao destuir o objeto
 {
 	if (!amount)
 	{
