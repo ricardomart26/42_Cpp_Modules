@@ -6,7 +6,7 @@ SRC = tests.cpp Account.cpp
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC) Makefile
 	$(CC) $(SRC) -o $(NAME)
 
 clean:

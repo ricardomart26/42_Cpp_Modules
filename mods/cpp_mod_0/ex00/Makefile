@@ -6,12 +6,15 @@ NAME = megaphone
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC) Makefile
 	$(CC) $(SRC) -o $(NAME)
 
 clean:
+	rm *.o
+
+fclean:
 	test ! -s $(NAME) || rm -f $(NAME)
 
 re: clean all
 
-.PHONY: all clean re
+.PHONY: all clean fclean re

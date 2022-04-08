@@ -21,13 +21,16 @@ class Contact {
 		std::string	get_input(const std::string& prompt);
 		void		set_values(int i);
 		void		print_search();
+		int 	   	ask_for_index();
+		int     	validate_index(std::string& index_to_find);
+		void    	print_index();
 
 	private:
 
 		std::string	_firstName;
 		std::string	_lastName;
 		std::string	_nickname;
-		size_t		_phoneNumber;
+		std::string	_phoneNumber;
 		std::string	_secret;
 		size_t		_index;
 
