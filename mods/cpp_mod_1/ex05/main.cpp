@@ -1,14 +1,14 @@
-#include "Karen.hpp"
+#include "Harl.hpp"
 
 int main(void)
 {
-	Karen Bruna;
+	Harl clang;
 
-	Bruna.complain("DEBUG");
-	Bruna.complain("PENIS");
-	Bruna.complain("INFO");
-	Bruna.complain("WARNING");
-	Bruna.complain("ERROR");
+	clang.complain("DEBUG");
+	clang.complain("PENIS");
+	clang.complain("INFO");
+	clang.complain("WARNING");
+	clang.complain("ERROR");
 
 	return (0);
 }

@@ -7,18 +7,13 @@ int	strstr(std::string src, std::string find)
 	int	x;
 
 	i = 0;
-	std::cout << "src: " << src << std::endl;
-	std::cout << "find: " << find << std::endl;
-
 	while (src[i])
 	{
-		std::cout << "src[" << i << "]: " << src[i] << std::endl;
 		x = 0;
 		if (src[i] == find[x])
 		{
 			while (src[i] && find[x] && src[i++] == find[x++])
 			{
-				std::cout << i << std::endl;
 				if (x == (int)find.size())
 					return (i - x);
 			}
@@ -41,23 +36,38 @@ std::string	replace_strings(const std::string& line, const std::string& s2, int 
 	i = 0;
 	while (i < (int)s2.size())
 		ret.push_back(s2[i++]);
+	
 	if (len_s1 < (int)s2.size())
 		while (line[x + len_s1])
 			ret.push_back(line[x++ + len_s1]);
 	else if (len_s1 > (int)s2.size())
-		while (line[x + s2.size()])
-			ret.push_back(line[x++ + s2.size()]);
+		while (line[x + len_s1])
+			ret.push_back(line[x++ + len_s1]);
 	else
 		while (line[pos])
 			ret.push_back(line[pos++]);
-	ret.push_back('\0');
+	// ret.push_back('\0');
 	return (ret);
+}
+
+std::string	remove_ext(const std::string &filename)
+{
+	size_t pos = filename.find_last_of(".");
+	if (pos == std::string::npos)
+		return (filename);
+	return (filename.substr(0, pos));
+
 }
 
 void	replace_strings_in_file(const std::string& filename, const std::string& s1, const std::string& s2)
 {
 	std::fstream fd(filename.c_str());
-	std::fstream file_to_replace("FILENAME.replace", std::ios::out);
+	if (!fd)
+	{
+		std::cout << "file doesn't exist or doesn't have permissions, try again\n";
+		return ;
+	}
+	std::fstream file_to_replace(remove_ext(filename) + ".replace", std::ios::out);
 	std::string line;
 	int	pos;
 

@@ -1,9 +1,9 @@
-#ifndef KAREN_HPP
-# define KAREN_HPP
+#ifndef HARL_HPP
+# define HARL_HPP
 
 # include <iostream>
 
-class Karen 
+class Harl 
 {
 
 	public:
@@ -16,6 +16,7 @@ class Karen
 		void	info( void );
 		void	warning( void );
 		void	error( void );
+		void	notfound( void );
 
 };
 

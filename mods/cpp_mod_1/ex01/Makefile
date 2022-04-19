@@ -1,4 +1,4 @@
-CC = clang++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -pedantic
+CC = c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -pedantic
 
 NAME = Horde
 

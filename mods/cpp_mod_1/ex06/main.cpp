@@ -1,11 +1,11 @@
-#include "Karen.hpp"
+#include "Harl.hpp"
 #include <map>
 
-typedef void	(Karen::*func_ptr[]) (void);
+typedef void	(Harl::*func_ptr[]) (void);
 
 int main(int ac, char **av)
 {
-	Karen clang;
+	Harl clang;
 
 	if (ac < 2)
 	{

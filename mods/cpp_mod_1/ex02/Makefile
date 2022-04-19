@@ -1,4 +1,4 @@
-CC = clang++ -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
+CC = c++ -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
 
 SRC = main.cpp
 

@@ -1,8 +1,8 @@
 CC = clang++ -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
 
-NAME = Karen
+NAME = Harl
 
-SRC = main.cpp Karen.cpp
+SRC = main.cpp Harl.cpp
 
 all: $(NAME)
 

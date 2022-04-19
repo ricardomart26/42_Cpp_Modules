@@ -10,9 +10,13 @@ HumanB::HumanB( const std::string &name ) : _name( name )
 	std::cout << "Human B <name: "<< _name << "> constructed\n";
 }
 
+~HumanB::HumanB()
+{
+}
+
 void	HumanB::atack( void )
 {
-	std::cout << this->_name << " atack with his " << this->_weapon->getType() << std::endl;
+	std::cout << this->_name << " attacks with their " << this->_weapon->getType() << std::endl;
 }
 
 void	HumanB::setWeapon( Weapon &weapon )

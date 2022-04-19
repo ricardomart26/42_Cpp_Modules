@@ -1,5 +1,5 @@
-#ifndef KAREN_HPP
-# define KAREN_HPP
+#ifndef HARL_HPP
+# define HARL_HPP
 
 # include <iostream>
 
@@ -12,7 +12,7 @@ typedef enum logLevel
 	NOT_FOUND
 } log_level;
 
-class Karen 
+class Harl 
 {
 	public:
 	
