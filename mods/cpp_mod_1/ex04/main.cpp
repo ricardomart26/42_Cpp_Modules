@@ -46,7 +46,6 @@ std::string	replace_strings(const std::string& line, const std::string& s2, int 
 	else
 		while (line[pos])
 			ret.push_back(line[pos++]);
-	// ret.push_back('\0');
 	return (ret);
 }
 
@@ -82,27 +81,33 @@ void	replace_strings_in_file(const std::string& filename, const std::string& s1,
 	fd.close();
 }
 
-int main(void)
+int main(int ac, char **av)
 {
-	std::string	filename;
-	std::string	s1;
-	std::string	s2;
+	if (ac != 4)
+	{
+		std::cout << "Usage of program: " << av[0] << " <filename> <string to replace> <replacement string>" << std::endl;
+		return (1);
+	}
 
-	while (filename.empty())
+	std::string s1(av[2]);
+	std::string s2(av[3]);
+	std::fstream fd(av[1]);
+	if (!fd)
 	{
-		std::cout << "Enter a filename at your choise: ";
-		std::getline(std::cin, filename);
+		std::cout << "file doesn't exist or doesn't have permissions, try again\n";
+		return (1);
 	}
-	while (s1.empty())
+	std::fstream file_to_replace(remove_ext(std::string(av[1])) + ".replace", std::ios::out);
+	std::string line;
+
+	while (!fd.eof())
 	{
-		std::cout << "Enter a string to replace: ";
-		std::getline(std::cin, s1);
-	}	
-	while (s2.empty())
-	{
-		std::cout << "Enter a string thats going to replace: ";
-		std::getline(std::cin, s2);
+		std::getline(fd, line);
+		int pos = strstr(line, s1);
+		if (pos != -1)
+			line = replace_strings(line, s2, pos, s1.size());
+		file_to_replace << line << std::endl;
 	}
-	replace_strings_in_file(filename, s1, s2);
+	fd.close();
 	return (0);
 }

@@ -10,7 +10,7 @@ HumanB::HumanB( const std::string &name ) : _name( name )
 	std::cout << "Human B <name: "<< _name << "> constructed\n";
 }
 
-~HumanB::HumanB()
+HumanB::~HumanB()
 {
 }
 

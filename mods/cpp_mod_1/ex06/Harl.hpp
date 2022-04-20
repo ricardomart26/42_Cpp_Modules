@@ -15,14 +15,15 @@ typedef enum logLevel
 class Harl 
 {
 	public:
-	
-		void		complain(const std::string& level);
+
+		void		complain(const std::string &level);
 		void		setLogLevel(const std::string& level);
 		log_level	getLogLevel( void );
 
 	private:
-	
+		
 		logLevel		_logLevel;
+		void			notfound( void );
 		void			debug( void );
 		void			info( void );
 		void			warning( void );

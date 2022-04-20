@@ -1,48 +1,42 @@
 #include "Harl.hpp"
 
-typedef void	(Harl::*HarlFuncPtr[]) (void);
 
 void	Harl::complain(const std::string& level)
 {
-	HarlFuncPtr	arrayPtrFunc = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	int				option = -1;
+	setLogLevel(level);
 
-	(!level.compare("DEBUG")) && (option = 0);
-	(!level.compare("INFO")) && (option = 1);
-	(!level.compare("WARNING")) && (option = 2);
-	(!level.compare("ERROR")) && (option = 3);
-
-	if (option < 0 || option > 3)
-		std::cout << "Option not found, Harl is limited\n";
-	else
-		(this->*arrayPtrFunc[option]) ();
-
+	switch (getLogLevel())
+	{
+		case DEBUG:
+			debug();
+			info();
+			warning();
+			error();
+			break ;
+		case INFO:
+			info();
+			warning();
+			error();
+			break ;
+		case WARNING:
+			warning();
+			error();
+			break ;
+		case ERROR:
+			error();
+			break ;
+		default:
+			notfound();
+	}
 }
 
 void	Harl::setLogLevel(const std::string& level)
 {
-	int	log;
-
-	(!level.compare("DEBUG")) && (log = 0);
-	(!level.compare("INFO")) && (log = 1);
-	(!level.compare("WARNING")) && (log = 2);
-	(!level.compare("ERROR")) && (log = 3);
-	if (log < 0 || log > 3)
-	{
-		std::cout << "Option not found, Harl is limited";
-		_logLevel = NOT_FOUND;
-	}
-	else
-	{
-		if (log == 0)
-			_logLevel = DEBUG;
-		else if (log == 1)
-			_logLevel = INFO;
-		else if (log == 2)
-			_logLevel = WARNING;
-		else if (log == 3)
-			_logLevel = ERROR;
-	}
+	_logLevel = NOT_FOUND;
+	(!level.compare("DEBUG")) && (_logLevel = DEBUG);
+	(!level.compare("INFO")) && (_logLevel = INFO);
+	(!level.compare("WARNING")) && (_logLevel = WARNING);
+	(!level.compare("ERROR")) && (_logLevel = ERROR);
 }
 
 log_level	Harl::getLogLevel( void )
@@ -69,4 +63,9 @@ void	Harl::warning( void )
 void	Harl::error( void )
 {
 	std::cout << "This is unacceptable, I want to speak to the manager now." <<  std::endl;
+}
+
+void	Harl::notfound( void )
+{
+	std::cout << "Option not found, Harl is limited" << std::endl;
 }

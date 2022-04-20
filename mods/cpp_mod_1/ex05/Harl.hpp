@@ -11,7 +11,8 @@ class Harl
 		void	complain(const std::string& level);
 	
 	private:
-	
+
+		int		_option;
 		void	debug( void );
 		void	info( void );
 		void	warning( void );
