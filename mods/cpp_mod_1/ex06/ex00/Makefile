@@ -1,8 +1,8 @@
-NAME = FixedPoint
-
 CC = c++ -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
 
-SRC = Fixed.cpp main.cpp bsp.cpp Point.cpp
+NAME = Zombie
+
+SRC = Zombie.cpp main.cpp newZombie.cpp randomChump.cpp
 
 all: $(NAME)
 
@@ -10,8 +10,11 @@ $(NAME): $(SRC) Makefile
 	$(CC) $(SRC) -o $(NAME)
 
 clean:
+	rm *.o
+
+fclean:
 	test ! -s $(NAME) || rm $(NAME)
 
-re: clean all
+re: fclean all
 
-.PHONY: all clean re
+.PHONY: all clean fclean re

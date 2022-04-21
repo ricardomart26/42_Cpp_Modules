@@ -10,14 +10,24 @@ Fixed::Fixed()
 
 Fixed::Fixed( const int raw )
 {
-	// std::cout << "Int Constructor called!" << std::endl;
-	_fixedPoint = (raw << _staticPoint);
+	if (raw > (INT_MAX >> _staticPoint) || raw < (INT_MIN >> _staticPoint))
+	{
+		setRawBits(0);
+		std::cout << "Number out of limits!" << std::endl;
+	}
+	else
+		_fixedPoint = (raw << _staticPoint);
 }
 
 Fixed::Fixed( const float raw )
 {
-	// std::cout << "Float Constructor called!" << std::endl;
-	_fixedPoint = (int)(raw * std::pow(2, _staticPoint));
+	if (raw > (INT_MAX >> _staticPoint) || raw < (INT_MIN >> _staticPoint))
+	{
+		std::cout << "Number out of limits!" << std::endl;
+		setRawBits(0);
+	}
+	else
+		_fixedPoint = (int)(raw * std::pow(2, _staticPoint));
 }
 
 Fixed::~Fixed()

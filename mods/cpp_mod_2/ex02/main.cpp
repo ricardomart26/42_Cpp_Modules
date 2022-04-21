@@ -12,15 +12,32 @@ int main( void )
 	// }
 	{
 		Fixed a;
+		Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+		std::cout << a << std::endl;
+		std::cout << ++a << std::endl;
+		std::cout << a << std::endl;
+		std::cout << a++ << std::endl;
+		std::cout << a << std::endl;
+		std::cout << b << std::endl;
+		std::cout << Fixed::max( a, b ) << std::endl;
+		return 0;
+	}
+	#if 0
+	{
+		Fixed a(10000000);
+		Fixed w(-10000000);
+		Fixed t(10000000.0f);
 		Fixed b( Fixed( 5.05f ) * Fixed( 2 ) );
 		Fixed const c( Fixed( 5.5f ) + Fixed( 2 ) );
 		Fixed const d( Fixed( 5.5f ) - Fixed( 2 ) );
 		Fixed const e( Fixed( 5.0f ) / Fixed( 2 ) );
 		Fixed const f(5.005f);
 
-		a = b + c;
-
+		// a = b + c;
+		// std::cout << "e: " << 1000000.0f << std::endl;
 		std::cout << f << std::endl;
+		std::cout << w << std::endl;
+		std::cout << t << std::endl;
 		std::cout << b << std::endl;
 		std::cout << c << std::endl;
 		std::cout << b + c <<  " = " << a << std::endl;
@@ -37,12 +54,13 @@ int main( void )
 		std::cout << "(const) Which one is bigger? " << c << " or " << d << ": " << Fixed::max(c, d) <<"\n";
 		std::cout << "(const) Which one is smaller? " << e << " or " << f << ": " << Fixed::min(e, f) <<"\n";
 		
-		// std::cout << ++a << std::endl;
-		// std::cout << a++ << std::endl;
-		// std::cout << a << std::endl;
-		// std::cout << b << std::endl;
-		// std::cout << Fixed::max( a, b ) << std::endl;
+		std::cout << ++a << std::endl;
+		std::cout << a++ << std::endl;
+		std::cout << a << std::endl;
+		std::cout << b << std::endl;
+		std::cout << Fixed::max( a, b ) << std::endl;
 	}
+	#endif
 	return 0;
 }
 

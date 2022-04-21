@@ -9,3 +9,8 @@ AMateria::~AMateria()
 {
 	return ;
 }
+
+std::string const & AMateria::getType() const
+{
+	return (_type);
+}

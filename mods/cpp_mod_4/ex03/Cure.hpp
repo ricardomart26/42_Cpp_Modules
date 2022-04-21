@@ -3,7 +3,9 @@
 
 #include "AMateria.hpp"
 
-class Cure : protected AMateria
+class ICharacter;
+
+class Cure : public AMateria
 {
 
 	public:

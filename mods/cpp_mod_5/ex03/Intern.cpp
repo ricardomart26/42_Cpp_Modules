@@ -43,5 +43,5 @@ Form    *Intern::makeForm(const std::string &name, const std::string &target)
         return (new RobotomyRequestForm(target));
     }
     std::cout << "Form not found\n";
-    return ( nullptr );
+    return ( NULL );
 }

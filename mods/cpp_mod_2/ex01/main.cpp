@@ -4,6 +4,7 @@ int main( void )
 {
 	Fixed a;
 	Fixed const b( 10 );
+	Fixed const e( 10.0f );
 	Fixed const c( 42.42f );
 	Fixed const test( 100.5f );
 	Fixed const d( b );

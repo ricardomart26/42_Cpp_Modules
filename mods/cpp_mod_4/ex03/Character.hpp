@@ -1,8 +1,8 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
 
-#include "AMateria.hpp"
 #include "ICharacter.hpp"
+#include "AMateria.hpp"
 #include <iostream>
 
 #define SIZE 4
@@ -10,6 +10,7 @@
 /**
  * Has a limit of 4 materias
  */
+
 class Character : public ICharacter
 {
 

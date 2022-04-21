@@ -1,6 +1,6 @@
 NAME = AMateria
 
-CC = clang++ -Wall -Werror -Wextra -pedantic -std=c++98 -fsanitize=address
+CC = clang++ -Wall -Werror -Wextra -std=c++98 -fsanitize=address
 
 SRC = main.cpp AMateria.cpp Ice.cpp Cure.cpp Character.cpp MateriaSource.cpp
 

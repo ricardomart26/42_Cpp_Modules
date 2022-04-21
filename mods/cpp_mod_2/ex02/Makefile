@@ -1,15 +1,18 @@
 NAME = FixedPoint
 
-CC = clang++ -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
+CC = c++ -Wall -Wextra -Werror -std=c++98 -pedantic -fsanitize=address
 
 SRC = Fixed.cpp main.cpp
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC) Makefile
 	$(CC) $(SRC) -o $(NAME)
 
 clean:
+	rm -rf *.o
+
+fclean: clean
 	test ! -s $(NAME) || rm $(NAME)
 
 re: clean all

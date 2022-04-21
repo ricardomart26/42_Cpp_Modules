@@ -2,19 +2,21 @@
 
 #include <iostream>
 
+
 /**
  * @default_constructor: Initializes _data variable to 0
  */
+
 Node::Node()
 {
     _data = 0;
-    _next = nullptr;
+    _next = NULL;
 }
 
 Node::Node(int d)
 {
     _data = d;
-    _next = nullptr;
+    _next = NULL;
 }
 
 Node::~Node()
@@ -35,7 +37,7 @@ void    Node::push(int d)
     
     newNode = new Node(d);
     temp = this;
-    while (temp->_next != nullptr)
+    while (temp->_next != NULL)
         temp = temp->_next;
     temp->_next = newNode;
 }
@@ -49,7 +51,7 @@ void    Node::pop()
 
 void    Node::print()
 {
-    for (Node *temp = this; temp != nullptr; temp = temp->_next)
+    for (Node *temp = this; temp != NULL; temp = temp->_next)
         std::cout << "This is the data: " << temp->_data << std::endl;    
 }
 

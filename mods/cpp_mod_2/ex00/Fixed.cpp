@@ -37,4 +37,3 @@ void	Fixed::setRawBits( const int raw )
 	std::cout << "Set Raw bits called!" << std::endl;
 	this->_fixedPoint = raw;
 }
-

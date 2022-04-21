@@ -36,9 +36,8 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &obj)
 
 void	MateriaSource::learnMateria(AMateria *m)
 {
-	int i;
-
-	for (int i = 0; i < SIZE && _materia[i]; i++);
+	int i = 0;
+	for (; i < SIZE && _materia[i]; i++);
 	if (i >= SIZE)
 	{
 		std::cout << "No slots found for materia in learnMateria\n";
@@ -56,4 +55,5 @@ AMateria *MateriaSource::createMateria(const std::string &type)
 			return (this->_materia[i]->clone());
 	}
 	std::cout << "Type still not in materia array in createMateria\n";
+	return (0);
 }

@@ -1,12 +1,11 @@
 #ifndef AMATERIA_HPP
 #define AMATERIA_HPP
 
-#include "Character.hpp"
+#include "ICharacter.hpp"
 #include <iostream>
 
 class AMateria
 {
-
 	public:
 
 		AMateria();
