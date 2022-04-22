@@ -39,23 +39,84 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &rhs)
 
 void    ClapTrap::attack(std::string const & target)
 {
-    std::cout << "Claptrap " << this->_name << " attack " << target << ", causing " 
-    << this->_attackDamage << " points of damage!" << std::endl; 
+    if (_hitPoints <= 0)
+        std::cout << "ClapTrap <" << _name << "> is dead, cannot attack!\n";
+    else if (_energyPoints <= 0)
+        std::cout << "ClapTrap <" << _name << "> doenst have energy points, cannot be repaired!\n";
+    else
+    {
+        _energyPoints--;
+        std::cout << "Claptrap " << _name << " attack " << target << ", causing " 
+        << _attackDamage << " points of damage!" << std::endl; 
+    }
 }
 
 void    ClapTrap::takeDamage(unsigned int amount)
 {
-    std::cout << "Claptrap " << this->_name << " took Damage, received " 
-    << amount << " points of damage!" << std::endl; 
+    if (_hitPoints <= 0)
+        std::cout << "ClapTrap <" << _name << "> is dead, cannot be repaired!\n";
+    else if (_energyPoints <= 0)
+        std::cout << "ClapTrap <" << _name << "> doenst have energy points, cannot be repaired!\n";
+    else
+    {
+        _hitPoints -= amount;
+        std::cout << "Claptrap <" << _name << "> took Damage, received " 
+        << amount << " points of damage !" << std::endl; 
+    }
 }
 
 void    ClapTrap::beRepaired(unsigned int amount)
 {
-    std::cout << "Claptrap " << this->_name << " repaired damage, received " 
-    << amount << " points of life!" << std::endl; 
+    if (_hitPoints <= 0)
+        std::cout << "ClapTrap <" << _name << "> is dead, cannot be repaired!";
+    else if (_energyPoints <= 0)
+        std::cout << "ClapTrap <" << _name << "> doenst have energy points, cannot be repaired!";
+    else
+    {
+        _energyPoints--;
+        _hitPoints += amount;
+        std::cout << "Claptrap " << _name << " repaired damage, received " 
+        << amount << " points of life, has now " << _hitPoints << "!" << std::endl; 
+    }
 }
 
-std::string ClapTrap::getName()
+const std::string &ClapTrap::getName(void) const
 {
     return _name;
+}
+
+int ClapTrap::getHit() const
+{
+    return _hitPoints;
+}
+
+int ClapTrap::getEnergy() const
+{
+    return _energyPoints;
+}
+
+int ClapTrap::getAttack() const
+{
+    return _attackDamage;
+}
+
+
+void    ClapTrap::setName(const std::string &name)
+{
+    _name = name;
+}
+
+void    ClapTrap::setHit(int life)
+{
+    _hitPoints = life;
+}
+
+void    ClapTrap::setEnergy(int energy)
+{
+    _energyPoints = energy;
+}
+
+void    ClapTrap::setAttack(int attack)
+{
+    _attackDamage = attack;
 }

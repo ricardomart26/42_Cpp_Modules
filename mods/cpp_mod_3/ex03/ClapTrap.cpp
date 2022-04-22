@@ -37,22 +37,47 @@ ClapTrap	ClapTrap::operator=(const ClapTrap &rhs)
 	return (*this);
 }
 
-void		ClapTrap::attack(std::string const & target)
+void    ClapTrap::attack(std::string const & target)
 {
-	std::cout << "Claptrap " << this->_name << " attack " << target << ", causing " 
-	<< this->_attackDamage << " points of damage!" << std::endl; 
+    if (_hitPoints <= 0)
+        std::cout << "ClapTrap <" << _name << "> is dead, cannot attack!\n";
+    else if (_energyPoints <= 0)
+        std::cout << "ClapTrap <" << _name << "> doenst have energy points, cannot be repaired!\n";
+    else
+    {
+        _energyPoints--;
+        std::cout << "Claptrap " << _name << " attack " << target << ", causing " 
+        << _attackDamage << " points of damage!" << std::endl; 
+    }
 }
 
-void		ClapTrap::takeDamage(unsigned int amount)
+void    ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << "Claptrap " << this->_name << " took Damage, received " 
-	<< amount << " points of damage!" << std::endl; 
+    if (_hitPoints <= 0)
+        std::cout << "ClapTrap <" << _name << "> is dead, cannot be repaired!\n";
+    else if (_energyPoints <= 0)
+        std::cout << "ClapTrap <" << _name << "> doenst have energy points, cannot be repaired!\n";
+    else
+    {
+        _hitPoints -= amount;
+        std::cout << "Claptrap <" << _name << "> took Damage, received " 
+        << amount << " points of damage !" << std::endl; 
+    }
 }
 
-void		ClapTrap::beRepaired(unsigned int amount)
+void    ClapTrap::beRepaired(unsigned int amount)
 {
-	std::cout << "Claptrap " << this->_name << " repaired damage, received " 
-	<< amount << " points of life!" << std::endl; 
+    if (_hitPoints <= 0)
+        std::cout << "ClapTrap <" << _name << "> is dead, cannot be repaired!";
+    else if (_energyPoints <= 0)
+        std::cout << "ClapTrap <" << _name << "> doenst have energy points, cannot be repaired!";
+    else
+    {
+        _energyPoints--;
+        _hitPoints += amount;
+        std::cout << "Claptrap " << _name << " repaired damage, received " 
+        << amount << " points of life, has now " << _hitPoints << "!" << std::endl; 
+    }
 }
 
 std::string	ClapTrap::getName() const

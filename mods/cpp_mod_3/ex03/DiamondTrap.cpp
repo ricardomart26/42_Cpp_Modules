@@ -19,33 +19,46 @@
  * * (Person) 
  */
 
-DiamondTrap::DiamondTrap(std::string name)
+DiamondTrap::DiamondTrap()
 {
 	std::cout << "Diamond Trap initialized!" << std::endl;
-	setName(name);
 	setHit(FragTrap::getHit());
 	setEnergy(ScavTrap::getEnergy());
-	setAttack(FragTrap::getAttack());
-	ClapTrap::setName("Claptrap OBJ");
+	ClapTrap::setName("random_clap_name");
+	// setName(name);
+	_name = "random";
+}
+
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), FragTrap(name + "_clap_name"), ScavTrap(name + "_clap_name")
+{
+	std::cout << "Diamond Trap initialized!" << std::endl;
+	setHit(FragTrap::getHit());
+	setEnergy(ScavTrap::getEnergy());
+	ClapTrap::setName(name + "_clap_name");
+	// setName(name);
+	_name = name;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &copy)
 {
-	this->setName(copy.getName());
-	this->setHit(copy.getHit()); 
-	this->setEnergy(copy.getEnergy()); 
-	this->setAttack(copy.getAttack());
-	this->ClapTrap::setName(copy.ClapTrap::getName());
-
+	_name = copy._name;
+	setHit(copy.getHit()); 
+	setEnergy(copy.getEnergy()); 
+	setAttack(copy.getAttack());
+	ClapTrap::setName(copy.ClapTrap::getName());
 }
 
+DiamondTrap::~DiamondTrap()
+{
+	std::cout << "Diamond Trap deconstructed!" << std::endl;
+}
 /**
  * TODO: Get ClapTrap Name!
  */
 
 void	DiamondTrap::whoAmI()
 {
-	std::cout << "My name <" << _name << "> and my Claptrap name <>." << std::endl; 
+	std::cout << "My name <" << _name << "> and my Claptrap name is " << ClapTrap::getName() << ".\n"; 
 }
 
 void		DiamondTrap::attack(std::string const & target)

@@ -1,17 +1,20 @@
-CC = clang++ -Wall -Werror -Wextra -pedantic -std=c++98 -fsanitize=address
+CC = c++ -Wall -Werror -Wextra -pedantic -std=c++98 -fsanitize=address
 
-SRC = ClapTrap.cpp main.cpp ScavTrap.cpp FragTrap.cpp
+SRC = ClapTrap.cpp goncalo_main.cpp ScavTrap.cpp FragTrap.cpp
 
-NAME = ClapTrap
+NAME = Fragtrap
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC) Makefile
 	$(CC) $(SRC) -o $(NAME)
 
 clean:
+	rm -rf *.o
+
+fclean: clean
 	test ! -s $(NAME) || rm $(NAME)
 
-re: clean all
+re: fclean all
 
-.PHONY: all clean re
+.PHONY: all clean re fclean

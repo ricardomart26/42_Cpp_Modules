@@ -14,10 +14,17 @@ class ClapTrap
         ClapTrap(const ClapTrap& copy);
         ClapTrap &operator=(const ClapTrap &rhs);
 
-        void        attack(std::string const & target);
-        void        takeDamage(unsigned int amount);
-        void        beRepaired(unsigned int amount);
-        std::string getName();
+        void                attack(std::string const & target);
+        void                takeDamage(unsigned int amount);
+        void                beRepaired(unsigned int amount);
+        void                setName(const std::string &name);
+        void                setHit(int life);
+        void                setEnergy(int energy);
+        void                setAttack(int attack);
+        const std::string   &getName() const;
+        int                 getHit() const;
+        int                 getEnergy() const;
+        int                 getAttack() const;
 
     private:
         
