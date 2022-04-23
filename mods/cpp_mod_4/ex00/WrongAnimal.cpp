@@ -15,7 +15,9 @@ WrongAnimal::WrongAnimal(const WrongAnimal& copy)
 
 WrongAnimal & WrongAnimal::operator=(const WrongAnimal &obj)
 {
-	(void)obj;
+	if (this == &obj)
+		return (*this);
+	this->_type = obj._type;
 	return (*this);
 }
 

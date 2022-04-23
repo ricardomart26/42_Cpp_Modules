@@ -20,7 +20,9 @@ Animal::~Animal()
 
 Animal & Animal::operator=(const Animal &obj)
 {
-	(void)obj;
+	if (this == &obj)
+		return (*this);
+	this->_type = obj._type;
 	return (*this);
 }
 
@@ -32,9 +34,9 @@ std::string Animal::getType(void) const
 void Animal::makeSound(void) const
 {
 	if (_type.empty())
-		std::cout << "Im an Animal, but you dont know which one, Loser" << std::endl;
-	else if (_type.compare("Dog"))
+		std::cout << "Im an Animal, but you dont know which one." << std::endl;
+	else if (!_type.compare("Dog"))
 		std::cout << "Ão Ão" << std::endl;
-	else if (_type.compare("Cat"))
+	else if (!_type.compare("Cat"))
 		std::cout << "Miau" << std::endl;
 }

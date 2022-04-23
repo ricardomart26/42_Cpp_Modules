@@ -2,16 +2,19 @@ SRC = Animal.cpp Cat.cpp Dog.cpp main.cpp WrongAnimal.cpp WrongCat.cpp
 
 NAME = Animal
 
-CC = clang++ -Wall -Werror -Wextra -fsanitize=address -std=c++98 -pedantic
+CC = c++ -Wall -Werror -Wextra -fsanitize=address -std=c++98 -pedantic
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC) Makefile
 	$(CC) $(SRC) -o $(NAME)
 
 clean:
+	rm -rf *.o
+
+fclean: clean
 	test ! -s $(NAME) || rm $(NAME)
 
-re: clean all
+re: fclean all
 
-.PHONY: all clean re
+.PHONY: all fclean clean re

@@ -4,8 +4,7 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-
-int main()
+int main(void)
 {
 	{	
 		const Animal* meta = new Animal();
@@ -39,10 +38,13 @@ int main()
 		delete dogPtr;
 		delete catPtr;
 	}
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
 	{
 		WrongAnimal* WrongCatPtr = new WrongCat();
 
-		std::cout << WrongCatPtr->getType() << " " << std::endl;
+		std::cout << "type of WrongCatPtr: " << WrongCatPtr->getType() << std::endl;
 		WrongCatPtr->makeSound();
 
 		delete WrongCatPtr;

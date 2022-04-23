@@ -35,8 +35,8 @@ void Animal::makeSound(void) const
 {
 	if (_type.empty())
 		std::cout << "Im an Animal, but you dont know which one, Loser" << std::endl;
-	else if (_type.compare("Dog"))
+	else if (!_type.compare("Dog"))
 		std::cout << "Ão Ão" << std::endl;
-	else if (_type.compare("Cat"))
+	else if (!_type.compare("Cat"))
 		std::cout << "Miau" << std::endl;
 }

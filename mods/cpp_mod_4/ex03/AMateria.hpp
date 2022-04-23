@@ -4,6 +4,8 @@
 #include "ICharacter.hpp"
 #include <iostream>
 
+
+// Do copy and assignment operator
 class AMateria
 {
 	public:
