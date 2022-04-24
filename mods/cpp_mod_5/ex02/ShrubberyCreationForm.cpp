@@ -3,11 +3,13 @@
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string target)
 : Form("S26", 145, 137)
 {
+	std::cout << "-- Class ShrubberyCreationForm: Constructor with target: " << target << " --\n";
 	_target = target;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
+	std::cout << "-- Class ShrubberyCreationForm: Destroyed object " << _target << " --\n";
 
 }
 

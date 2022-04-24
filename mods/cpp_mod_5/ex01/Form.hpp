@@ -10,17 +10,17 @@ class Form
 
 	public:
 		Form();
-		Form(std::string name, int requiredGrade, int executionGrade);
 		~Form();
 		Form(const Form &copy);
+		Form(const std::string &name, int requiredGrade, int executionGrade);
 		Form &operator=(const Form &rhs);
 
-		void				signForm(Bureaucrat &b);
-		const std::string	&getName();
-		void				beSigned(Bureaucrat &b);
-		int					getGradeRequired();
-		int					getGradeExecute();
-		bool				getSigned();
+		void				signForm(const Bureaucrat &b) const;
+		const std::string	&getName() const;
+		void				beSigned(const Bureaucrat &b);
+		int					getGradeRequired() const;
+		int					getGradeExecute() const;
+		bool				getSigned() const;
 
 
 		class GradeTooHighException: public std::exception
