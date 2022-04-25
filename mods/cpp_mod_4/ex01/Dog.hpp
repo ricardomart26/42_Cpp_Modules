@@ -12,6 +12,10 @@ class Dog : public Animal
 		Dog(const Dog &copy);
 		~Dog();
 		Dog &operator=(const Dog &obj);
+		
+		void	set_idea(const std::string &idea);
+		void	print_idea(const int idx) const;
+        void makeSound(void) const;
 
 	private:
 		Brain *_my_brain;

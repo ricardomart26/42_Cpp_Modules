@@ -2,15 +2,15 @@
 
 WrongAnimal::WrongAnimal()
 {
-	std::cout << "WrongAnimal class Constructed" << std::endl;
+	std::cout << "-- WrongAnimal class: Constructed --" << std::endl;
 	_type = "";
 
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& copy)
 {
-	std::cout << "WrongAnimal class Copied" << std::endl;
-	*this = copy;
+	std::cout << "-- WrongAnimal class: Copied --" << std::endl;
+	_type = copy._type;
 }
 
 WrongAnimal & WrongAnimal::operator=(const WrongAnimal &obj)
@@ -23,7 +23,7 @@ WrongAnimal & WrongAnimal::operator=(const WrongAnimal &obj)
 
 WrongAnimal::~WrongAnimal()
 {
-	std::cout << "WrongAnimal class Deconstructed" << std::endl;
+	std::cout << "-- WrongAnimal class: Deconstructed --" << std::endl;
 }
 
 std::string	WrongAnimal::getType(void) const

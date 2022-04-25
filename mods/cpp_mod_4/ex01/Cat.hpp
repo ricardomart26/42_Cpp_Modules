@@ -11,11 +11,15 @@ class Cat : public Animal
 		Cat();
 		Cat(const Cat &copy);
 		~Cat();
-		Cat &operator=(const Cat &obj);
+		Cat	&operator=(const Cat &obj);
+		
+		void	set_idea(const std::string &idea);
+		void	print_idea(const int idx) const;
+        void makeSound(void) const;
 
 	private:
 
-		Brain *_my_brain;
+		Brain	*_my_brain;
 };
 
 #endif

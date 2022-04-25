@@ -9,8 +9,13 @@ int main(void)
 	{	
 		const Animal* meta = new Animal();
 		const Animal* dogPtr = new Dog();
+		const Animal* copyPtr = new Animal(*dogPtr);
 		const Animal* catPtr = new Cat();
+		Animal* catPtr2 = new Cat();
 
+		*catPtr2 = *dogPtr;
+
+		
 		/**
 		 * When a pointer of base class (Animal) points to a Derived
 		 * Class (Dog/Cat), we can't use the methods inside of the 
@@ -19,12 +24,15 @@ int main(void)
 
 		std::cout << "type of dogPtr: " << dogPtr->getType() << " " << std::endl;
 		std::cout << "type of catPtr: " << catPtr->getType() << " " << std::endl;
+		std::cout << "type of copyPtr: " << copyPtr->getType() << " " << std::endl;
+		std::cout << "type of catPtr2: " << catPtr2->getType() << " " << std::endl;
+
 
 		dogPtr->makeSound(); // will output the dog sound!
 		catPtr->makeSound(); // will output the cat sound!
-
+		copyPtr->makeSound();
+		catPtr2->makeSound();
 		meta->makeSound();
-
 		delete meta;
 
 		/**
@@ -37,6 +45,8 @@ int main(void)
 		 */
 		delete dogPtr;
 		delete catPtr;
+		delete catPtr2;
+		delete copyPtr;
 	}
 	std::cout << std::endl;
 	std::cout << std::endl;
