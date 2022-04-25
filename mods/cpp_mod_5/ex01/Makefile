@@ -1,17 +1,20 @@
 NAME = Forms
 
-CC = clang++ -Wall -Werror -Wextra -pedantic -std=c++98 -fsanitize=address
+CC = c++ -Wall -Werror -Wextra -pedantic -std=c++98 -fsanitize=address
 
 SRC = main.cpp Bureaucrat.cpp Form.cpp
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC) Makefile
 	$(CC) $(SRC) -o $(NAME)
 
 clean:
+	rm -rf *.o
+
+fclean:
 	test ! -s $(NAME) || rm $(NAME)
 
-re: clean all
+re: fclean all
 
-.PHONY: all clean re
+.PHONY: all fclean clean re

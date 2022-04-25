@@ -1,6 +1,8 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include "PresidentionalPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include <cstdlib>
 
 int main(void)
@@ -45,6 +47,35 @@ int main(void)
 			a->beSigned(Ricardo);
 			a->signForm(Ricardo);
 			a->execute(Ricardo);
+			delete a;
+			std::cout << "\n";
+		}
+		catch (const std::exception &e)
+		{
+			std::cout << e.what() << "\n";
+		}
+
+		try 
+		{
+			Bureaucrat Baunilha("Baunilha", 5);
+			Form *a = new ShrubberyCreationForm("Hero Baunilha");
+			a->beSigned(Baunilha);
+			a->signForm(Baunilha);
+			a->execute(Baunilha);
+			delete a;
+			std::cout << "\n";
+		}
+		catch (const std::exception &e)
+		{
+			std::cout << e.what() << "\n";
+		}
+		try 
+		{
+			Bureaucrat Baunilha("Baunilha", 5);
+			Form *a = new RobotomyRequestForm("Hero Baunilha");
+			a->beSigned(Baunilha);
+			a->signForm(Baunilha);
+			a->execute(Baunilha);
 			delete a;
 			std::cout << "\n";
 		}
