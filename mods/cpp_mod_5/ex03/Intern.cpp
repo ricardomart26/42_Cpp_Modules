@@ -16,32 +16,29 @@ Intern::Intern(const Intern &copy)
     *this = copy;
 }
 
-// Intern  &Intern::operator = (const Intern &rhs)
-// {
-//     *this = rhs;
-//     return (*this);
-// }
+Intern  &Intern::operator = (const Intern &rhs)
+{
+    (void) rhs;
+    return (*this);
+}
 
 Form    *Intern::makeForm(const std::string &name, const std::string &target)
 {
-    std::map<std::string, Form *> intern;
-
-    intern
-    while (!name.compare("ShrubberyCreationForm"))
+    if (!name.compare("shrubbery request"))
     {
-        std::cout << "Intern creates <" << name << ">\n";
+        std::cout << "Intern creates " << name << "\n";
         return (new ShrubberyCreationForm(target));
     }
-    while (!name.compare("PresidentialPardonForm"))
+    if (!name.compare("presidential request"))
     {
-        std::cout << "Intern creates <" << name << ">\n";
+        std::cout << "Intern creates " << name << "\n";
         return (new PresidentialPardonForm(target));
     }        
-    while (!name.compare("RobotomyRequestForm"))
+    if (!name.compare("robotomy request"))
     {
-        std::cout << "Intern creates <" << name << ">\n";
+        std::cout << "Intern creates " << name << "\n";
         return (new RobotomyRequestForm(target));
     }
-    std::cout << "Form not found\n";
+    std::cout << "Form " << name << "not found\n";
     return ( NULL );
 }

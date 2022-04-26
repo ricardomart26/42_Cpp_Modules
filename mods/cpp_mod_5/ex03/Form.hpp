@@ -3,14 +3,14 @@
 
 #include <iostream>
 #include <exception>
-#include "Bureaucrat.hpp"
+class Bureaucrat;
 
 class Form
 {
 
 	public:
 		Form();
-		Form(std::string name, int reqGrade, int execGrade);
+		Form(const std::string &name, int reqGrade, int execGrade);
 		virtual ~Form();
 		Form(const Form &copy);
 		Form &operator=(const Form &rhs);
@@ -25,7 +25,7 @@ class Form
 		 * @description: if _grade(member var) of bureaucrat is
 		 * Better or equal than the Required grade, _signed is true
 		 */
-		void		beSigned(Bureaucrat &b);
+		void				beSigned(const Bureaucrat &b);
 		const std::string	&getNameForm() const;
 		bool				getCanSign() const;
 		void				setCanSign(bool goodGrade);
@@ -55,14 +55,15 @@ class Form
 
 	private:
 
-		const std::string	_nameForm;
-		bool				_canSign;
-		bool				_isSigned;
-		const int			_gradeRequired;
-		const int			_gradeExecute;
+		const std::string			_nameForm;
+		volatile const int			_gradeRequired;
+		volatile const int			_gradeExecute;
+		bool						_canSign;
+		bool						_isSigned;
 
 };
 
 void	operator<<(std::ostream &os, const Form &rhs);
+#include "Bureaucrat.hpp"
 
 #endif

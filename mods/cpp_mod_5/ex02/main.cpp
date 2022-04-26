@@ -17,7 +17,7 @@ int main(void)
 			Form *a = new PresidentialPardonForm("Hero Ricardo");
 			a->beSigned(Ricardo);
 			a->signForm(Ricardo);
-			a->execute(Ricardo);
+			a->execute(Ricardo); // Erro nesta porque nao tem required grade
 			delete a;
 		}
 		catch (const std::exception &e)
@@ -25,7 +25,7 @@ int main(void)
 			std::cout << e.what() << "\n";
 		}
 
-		// Grade is goos to execute, but didnt sign after
+		// Grade is good to execute, but didnt sign after
 		try 
 		{
 			Bureaucrat Ricardo("Ricardo", 5);
@@ -55,6 +55,7 @@ int main(void)
 			std::cout << e.what() << "\n";
 		}
 
+		// Everyting is fine
 		try 
 		{
 			Bureaucrat Baunilha("Baunilha", 5);
@@ -69,6 +70,8 @@ int main(void)
 		{
 			std::cout << e.what() << "\n";
 		}
+
+
 		try 
 		{
 			Bureaucrat Baunilha("Baunilha", 5);
@@ -76,13 +79,14 @@ int main(void)
 			a->beSigned(Baunilha);
 			a->signForm(Baunilha);
 			a->execute(Baunilha);
+			Baunilha.executeForm(*a);
 			delete a;
-			std::cout << "\n";
 		}
 		catch (const std::exception &e)
 		{
 			std::cout << e.what() << "\n";
 		}
+		std::cout << "\n";
 
 		
 	}

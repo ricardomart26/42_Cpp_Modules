@@ -1,14 +1,29 @@
 #include "PresidentionalPardonForm.hpp"
 
 PresidentialPardonForm::PresidentialPardonForm(const std::string &target) 
-	: Form("Random", 25, 5)
+	: Form("Presidential Pardon", 25, 5)
 {
+	std::cout << "-- Class PresidentialPardonForm: Constructor with target: " << target << " --\n";
 	_target = target;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
+	std::cout << "-- Class PresidentialPardonForm: Destroyed object " << _target << " --\n";
+}
 
+
+PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPardonForm& rhs) 
+{
+	std::cout << "-- Class PresidentialPardonForm: Operator overloaded --\n";
+	_target = rhs._target;
+	return (*this);
+}
+
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& copy) 
+{
+	std::cout << "-- Class PresidentialPardonForm: Copy constructor --\n";
+	*this = copy;
 }
 
 
@@ -24,5 +39,5 @@ void	PresidentialPardonForm::execute(const Bureaucrat &b) const
 		delete this;
 		throw CannotExecuteGrade();
 	}
-	std::cout << "<" << _target << "> has been pardoned by Zafod Beeblebrox\n";
+	std::cout << _target << " has been pardoned by Zafod Beeblebrox\n";
 }

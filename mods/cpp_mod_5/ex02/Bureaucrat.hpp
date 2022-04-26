@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <exception>
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -13,6 +14,8 @@ class Bureaucrat
 		Bureaucrat(const std::string &name, int grade);
 		Bureaucrat(const Bureaucrat &copy);
 		Bureaucrat &operator=(const Bureaucrat& rhs);
+		
+		void	executeForm(const Form &from);
 
 		const std::string	&getName() const;
 		int					getGrade() const;

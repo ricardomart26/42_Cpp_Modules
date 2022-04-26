@@ -3,14 +3,19 @@
 
 #include <iostream>
 #include <exception>
+#include "Form.hpp"
 
 class Bureaucrat
 {
 	public:
 
 		Bureaucrat();
-		Bureaucrat(std::string name, int grade);
+		~Bureaucrat();
+		Bureaucrat(const std::string &name, int grade);
+		Bureaucrat(const Bureaucrat &copy);
 		Bureaucrat &operator=(const Bureaucrat& rhs);
+		
+		void	executeForm(const Form &from);
 
 		const std::string	&getName() const;
 		int					getGrade() const;
@@ -28,7 +33,7 @@ class Bureaucrat
 	private:
 
 		int			_grade;
-		std::string	_name;
+		const std::string	_name;
 };
 
 void	operator<<(std::ostream &os, Bureaucrat &rhs);

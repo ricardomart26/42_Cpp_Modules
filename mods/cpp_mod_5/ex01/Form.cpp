@@ -22,9 +22,9 @@ Form::Form(const Form &copy)
 	: _nameForm(copy._nameForm), _gradeRequired(copy._gradeRequired), _gradeExecute(copy._gradeExecute)
 {
 	std::cout << "-- Class Form: Copy constructer --\n";
-	_signed = false;
-}
+	_signed = copy._signed;
 
+}
 
 Form &Form::operator=(const Form& rhs)
 {

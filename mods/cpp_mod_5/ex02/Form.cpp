@@ -47,16 +47,6 @@ Form::~Form()
 	std::cout << "-- Class Form: Destroyed object " << _nameForm << " --\n";
 }
 
-void	Form::signForm(Bureaucrat &b)
-{
-	if (this->getCanSign() == true)
-	{
-		std::cout << b.getName() << "signs " << this->getNameForm() << "\n";
-		this->setIsSigned(true);
-	}
-	else
-		std::cout << b.getName() << " cannot sign " << this->getNameForm() << " because grade is to low\n";
-}
 
 void	Form::beSigned(const Bureaucrat &b)
 {
@@ -65,6 +55,18 @@ void	Form::beSigned(const Bureaucrat &b)
 	else
 		throw GradeTooLowException();
 }
+
+void	Form::signForm(Bureaucrat &b)
+{
+	if (this->getCanSign() == true)
+	{
+		std::cout << b.getName() << " signs " << this->getNameForm() << "\n";
+		this->setIsSigned(true);
+	}
+	else
+		std::cout << b.getName() << " cannot sign " << this->getNameForm() << " because grade is to low\n";
+}
+
 
 const std::string	&Form::getNameForm() const
 {

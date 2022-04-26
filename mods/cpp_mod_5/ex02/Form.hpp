@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <exception>
-#include "Bureaucrat.hpp"
+class Bureaucrat;
 
 class Form
 {
@@ -64,5 +64,6 @@ class Form
 };
 
 void	operator<<(std::ostream &os, const Form &rhs);
+#include "Bureaucrat.hpp"
 
 #endif

@@ -35,8 +35,8 @@ class Form
 	private:
 		const std::string	_nameForm;
 		bool				_signed;
-		const int			_gradeRequired;
-		const int			_gradeExecute;
+		volatile const int	_gradeRequired;
+		volatile const int	_gradeExecute;
 };
 
 void	operator<<(std::ostream &os, Form &rhs);

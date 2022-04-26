@@ -30,7 +30,7 @@ class Bureaucrat
 	
 	private:
 
-		int			_grade;
+		int					_grade;
 		const std::string	_name;
 };
 

@@ -12,8 +12,8 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm& r
 {
 	std::cout << "-- Class RobotomyRequestForm: Operator overloaded --\n";
 	_target = rhs._target;
+	return (*this);
 }
-
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& copy) 
 {
@@ -30,12 +30,12 @@ void	RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
 	if (this->getIsSigned() == false)
 	{
-		// delete this;
+		delete this;
 		throw CannotExecuteSign();
 	}
 	if (this->getGradeExecute() < executor.getGrade())
 	{
-		// delete this;
+		delete this;
 		throw CannotExecuteGrade();
 	}
 	std::cout << "Drrrrrrr\n";

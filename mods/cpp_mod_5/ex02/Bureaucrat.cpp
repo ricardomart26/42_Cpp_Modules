@@ -35,6 +35,11 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "-- Class Bureaucrat: Destroyed object " << _name << " --\n";
 }
 
+void	Bureaucrat::executeForm(const Form &form)
+{
+	form.execute(*this);
+}
+
 
 const std::string	&Bureaucrat::getName(void) const
 {

@@ -19,7 +19,6 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name)
 Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _grade(copy._grade), _name(copy._name)
 {
 	std::cout << "-- Class Bureaucrat: Copy constructer --\n";
-
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat& rhs)
@@ -50,13 +49,13 @@ int	Bureaucrat::getGrade(void) const
 void	Bureaucrat::IncreaseGrade()
 {
 	if (--_grade <= 0)
-		throw Bureaucrat::GradeTooHighException();
+		throw GradeTooHighException();
 }
 
 void	Bureaucrat::DecreaseGrade()
 {
 	if (++_grade > 150)
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 }	
 
 const char	*Bureaucrat::GradeTooLowException::what() const throw()
