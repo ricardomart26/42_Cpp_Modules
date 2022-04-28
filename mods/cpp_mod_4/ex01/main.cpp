@@ -10,7 +10,6 @@ int main()
 {
 	{
 		Animal	*animalPtr[SIZE];
-
 		std::cout << '\n';
 		for (int i = 0; i < SIZE; i++)
 		{
@@ -24,9 +23,9 @@ int main()
 
 		for (int i = 0; i < SIZE; i++)
 		{
-			if (animalPtr[i]->getType().compare("Dog"))
+			if (!animalPtr[i]->getType().compare("Dog"))
 				animalPtr[i]->makeSound();
-			else if (animalPtr[i]->getType().compare("Cat"))
+			else if (!animalPtr[i]->getType().compare("Cat"))
 				animalPtr[i]->makeSound();
 			
 		}
@@ -121,13 +120,15 @@ int main()
 		cat.print_idea(0);
 
 		Cat copy_cat(cat);
+		Cat op_cat = cat;
 		std::cout << '\n';
 
 		copy_cat.print_idea(0);
-
-		// cat.~Cat();
-
-		// copy_cat.print_idea(0);
+		op_cat.print_idea(0);
+        cat.set_idea(cat_ideas[4]);
+		cat.print_idea(1);
+		copy_cat.print_idea(1);
+		op_cat.print_idea(1);
 
 	}
 }

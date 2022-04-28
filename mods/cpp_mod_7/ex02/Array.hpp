@@ -15,7 +15,7 @@ class Array
 		T	&operator[] (const int loc);
 		~Array();
 
-		int	getSize( void );
+		int	size( void ) const;
 		T	*getArray( void );
 		class indexOutOfRange : public std::exception
 		{
@@ -34,21 +34,20 @@ class Array
 template <class T>
 Array<T>::Array()
 {
-	_arr = new T[0];
+	_arr = new T[0]();
 }
 
 template <class T>
 Array<T>::Array(unsigned int n) : _size( n )
 {
-	_arr = new T[n];
-	for (unsigned int i = 0; i < n; i++)
-		_arr[i] = 0;
+	_arr = new T[n]();
+
 }
 
 template <class T>
 Array<T>::~Array()
 {
-	delete _arr;
+	delete[] _arr;
 }
 
 template <class T>
@@ -56,10 +55,9 @@ Array<T>::Array(const Array &copy)
 {
 	_size = copy._size;
 	_arr = new T[copy._size];
-	for (int i = 0; i < copy._size; i++)
-		_arr[i] = copy->_arr[i];
+	for (size_t i = 0; i < copy._size; i++)
+		_arr[i] = copy._arr[i];
 }
-// Operator Overload
 
 template <class T>
 Array<T>	&Array<T>::operator = (const Array &rhs)
@@ -70,6 +68,7 @@ Array<T>	&Array<T>::operator = (const Array &rhs)
 	_arr = new T[rhs._size];
 	for (unsigned int i = 0; i < rhs._size; i++)
 		_arr[i] = rhs._arr[i];
+	_size = rhs._size;
 	return ( *this );
 }
 
@@ -77,14 +76,13 @@ template <class T>
 T	&Array<T>::operator[] (const int loc)
 {
 	if ( loc >= (int)_size || loc < 0 )
-		throw Array<T>::indexOutOfRange();
+		throw indexOutOfRange();
 	return ( _arr[loc] );
 }
 
-// Member Functions
 
 template <class T>
-int	Array<T>::getSize( void )
+int	Array<T>::size( void ) const
 {
 	return	( _size );
 }
@@ -95,12 +93,11 @@ T	*Array<T>::getArray( void )
 	return	( _arr );
 }
 
-// Exception Functions
 
 template <class T>
 const char	*Array<T>::indexOutOfRange::what() const throw()
 {
-	return ( "Index Out of Range" );
+	return ( "Exception: Index Out of Range" );
 }
 
 #endif

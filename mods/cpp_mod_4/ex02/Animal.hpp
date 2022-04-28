@@ -12,8 +12,10 @@ class Animal
 		virtual void		makeSound(void) const = 0;
 		std::string	getType(void) const;
 		void		setType(std::string);
-
-	private:
+		virtual	void	set_idea(const std::string &idea) = 0;
+		virtual void	print_idea(const int idx) const = 0;
+	
+	protected:
 
 		std::string _type;
 

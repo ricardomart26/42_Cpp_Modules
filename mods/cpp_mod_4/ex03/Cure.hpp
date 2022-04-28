@@ -2,8 +2,9 @@
 #define CURE_HPP
 
 #include "AMateria.hpp"
+#include "ICharacter.hpp"
 
-class ICharacter;
+// class ICharacter;
 
 class Cure : public AMateria
 {

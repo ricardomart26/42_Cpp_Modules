@@ -23,6 +23,7 @@ void	stripMe(std::string &str, const std::string set)
 
 int main(int ac, char *av[])
 {
+	std::cout << std::endl;
 	if (ac != 2)
 	{
 		std::cout << "Usage: " << av[0] <<" char \n";
@@ -30,12 +31,13 @@ int main(int ac, char *av[])
 	}
 	std::string str(av[1]);
 	stripMe(str, " \n\t\r\f\v");
-
+	std::cout << "OUTPUT IS: " << str << std::endl;
 	Converter c(str);
 	c.displayInt();
 	c.displayChar();
 	c.displayFloat();
 	c.displayDouble();
 
+	std::cout << std::endl;
 	return (0);
 }

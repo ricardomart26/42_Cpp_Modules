@@ -22,10 +22,11 @@ class Converter
 
 	private:
 
-		int			_convI;
 		char		_convC;
 		std::string _conv;
 		int			_sw;
+		double		_double;
+		bool		notInt;
 };
 
 #endif

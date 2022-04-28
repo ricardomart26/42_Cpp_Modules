@@ -15,10 +15,11 @@ Form::Form(const std::string &name, int reqGrade, int execGrade)
 	<< " and executionGrade: " << execGrade << " --\n";
 	_canSign = false;
 	_isSigned = false;
-	if (_gradeRequired > 150)
+	if (_gradeRequired > 150 || _gradeExecute > 150)
 		throw GradeTooLowException();
-	else if (_gradeRequired <= 0)
+	else if (_gradeRequired <= 0 || _gradeExecute <= 0)
 		throw GradeTooHighException();
+
 }
 
 Form::Form(const Form &copy) 

@@ -34,9 +34,9 @@ int main(int ac, char *av[])
 			for (int j = 0; j < len(av[i]); j++)
 			{
 				if (is_upper_char(av[i][j]) || !is_char(av[i][j]))
-					std::cout << char(av[i][j]);
+					std::cout << av[i][j];
 				else
-					std::cout << char(av[i][j] - 32);
+					std::cout << av[i][j] - 32;
 			}
 			std::cout << ' ';
 		}

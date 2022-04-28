@@ -1,5 +1,4 @@
 #include "Cure.hpp"
-#include <iostream>
 
 Cure::Cure() : AMateria("cure")
 {
@@ -19,19 +18,18 @@ Cure::~Cure()
 
 Cure & Cure::operator=(const Cure &obj)
 {
-	(void)obj;
 	std::cout << "Override Operator Cure class\n";
+	_type = obj._type;
 	return (*this);
 }
 
 AMateria* Cure::clone() const
 {
-	AMateria *CurePtr = new Cure();
-	return (CurePtr);
+	return (new Cure());
 }
 
 void Cure::use(ICharacter& target)
 {
-	std::cout << "Heals " << target.getName() << " wounds.\n";
+	std::cout << "* Heals " << target.getName() << "'s wounds. *\n";
 }
 

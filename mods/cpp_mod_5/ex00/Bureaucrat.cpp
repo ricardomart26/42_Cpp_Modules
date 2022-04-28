@@ -10,9 +10,9 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name)
 {
 	std::cout << "-- Class Bureaucrat: Constructed with name: " << name << " and grade: " << grade <<  " --\n";
 	if (grade > 150)
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 	else if (grade <= 0)
-		throw Bureaucrat::GradeTooHighException();
+		throw GradeTooHighException();
 	_grade = grade;
 }
 

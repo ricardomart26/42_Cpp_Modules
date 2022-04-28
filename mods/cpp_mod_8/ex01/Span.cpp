@@ -1,118 +1,136 @@
 #include "Span.hpp"
 
-Span::Span( int size ) : _n( 0 ), _maxSize( size )
+Span::Span(unsigned int n) : _n(n), _size(0)
 {
-    _arr = new int[ size ];
+    _arr = new int[n]();
 }
 
-Span::Span( const Span &copy )
+Span::Span(const Span &copy)
 {
-    this->_n = copy._n;
-    this->_maxSize = copy._maxSize;
-    this->_arr = new int[ this->_maxSize ];
-    for ( int i = 0; i < this->_maxSize; i++ )
-        this->_arr[ i ] = copy._arr[ i ];
+    _n = copy._n;
+    _size = copy._size;
+    _arr = new int[ _n];
+    for (size_t i = 0; i < _size; i++)
+        _arr[i] = copy._arr[i];
 }
 
 Span::~Span()
 {
-    delete ( _arr );
+    delete _arr;
 }
 
-Span   &Span::operator = ( const Span &rhs )
+Span   &Span::operator=(const Span &rhs)
 {
-    if ( this == &rhs )
-        return ( *this );
-    if ( this->_arr )
-        delete ( this->_arr );
-    this->_n = rhs._n;
-    this->_maxSize = rhs._maxSize;
-    this->_arr = new int[ this->_maxSize ];
-    for ( int i = 0; i < this->_maxSize; i++ )
-        this->_arr[ i ] = rhs._arr[ i ];
+    if (this == &rhs)
+        return (*this);
+    if (_arr)
+        delete _arr;
+    _n = rhs._n;
+    _size = rhs._size;
+    _arr = new int[_n];
+    for (size_t i = 0; i < _size; i++)
+        _arr[i] = rhs._arr[i];
     return ( *this );
 }
 
 void    Span::addNumber(int number)
 {
-    try 
+    if (_size >= _n)
+        throw noSpaceInArray();
+    _arr[_size] = number;
+    _size++;
+}
+
+size_t abs_diff(int a, int b)
+{
+    return (a > b ? a - b : b - a);
+}
+
+unsigned int    Span::shortestSpan()
+{
+    if (_size < 2)
+        throw needsMoreElem();
+    size_t diff = SIZE_MAX;
+    for (size_t i = 0; i < _size; i++)
     {
-        if ( _n >= _maxSize )
+        for (size_t  x = i + 1; x < _size; x++)
         {
-            throw ( noSpaceInArray() );
+            if (_arr[i] == _arr[x])
+                continue ; 
+            if (diff > abs_diff(_arr[i], _arr[x]))
+                diff = abs_diff(_arr[i], _arr[x]);
+            if (diff == 1)
+                return (diff);
         }
-        _arr[ _n ] = number;
-        _n++;
-    } catch ( const std::exception &e )
+    }
+    if (diff == 0)
+        throw noDiff();
+    return (diff);
+}
+
+unsigned int    Span::longestSpan()
+{
+    if (_size < 2)
+        throw needsMoreElem();
+    int min = _arr[0];
+    int max = _arr[0];
+    for (size_t i = 1; i < _size; i++)
     {
-        std::cout << e.what() << std::endl;
+        if (_arr[i] > max)
+            max = _arr[i];
+        else if (_arr[i] < min)
+            min = _arr[i];
+    }
+    if (max - min == 0)
+        throw noDiff();
+    return (max - min);
+}
+
+void    Span::range_add(int *begin, int *end, unsigned int position)
+{
+    unsigned int diff = end - begin;
+    if (position >= _size)
+        std::cout << "Position not available inside array\n";
+    if (diff + _size > _n)
+        throw noSpaceInArray();
+    
+    if (position == _size - 1)
+    {
+        while (begin != end)
+        {
+            addNumber(*begin);
+            begin++;
+        }
+        _size += diff;
+        return ;
+    }
+
+    _size += diff;
+    for (unsigned int i = position; begin != end; i++)
+    {
+        int temp = _arr[i];
+        _arr[i + diff] = temp;
+        _arr[i] = *begin;
+        begin++;
     }
 }
 
-int    Span::shortestSpan()
+int     Span::size() const
 {
-    try 
-    {
-        if (_n < 2)
-            throw ( needsMoreElem() );
-        int diff = abs( _arr[ 0 ] - _arr[ 1 ] );
-        for ( int i = 0; i < _n; i++ )
-        {
-            for ( int x = i + 1; x < _n; x++ )
-            {
-                std::cout << " i: arr["<<i<<"]: " << _arr[i];
-                std::cout << " x: arr["<<x<<"]: " << _arr[x];
-                if ( _arr[ i ] == _arr[ x ] )
-                {
-                    std::cout << " diff: " << diff << std::endl;
-                    continue ; 
-                }
-                if ( diff > abs( _arr[ i ] - _arr [ x ] ) )
-                    diff = abs( _arr[ i ] - _arr [ x ] );
-                if ( diff == 1 )
-                    return ( diff );
-                std::cout << " diff: " << diff << std::endl;
-            }
-        }
-        return ( diff );
-    } catch ( const std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-        return ( -1 );
-    }
-    return ( 0 );
-}
-
-int    Span::longestSpan()
-{
-    try
-    {
-        if ( _n < 2 )
-            throw ( needsMoreElem() );
-        int min = _arr[ 0 ];
-        int max = _arr[ 0 ];
-        for ( int i = 1; i < _n; i++ )
-        {
-            if ( _arr[ i ] > max )
-                max = _arr[ i ];
-            else if ( _arr[ i ] < min )
-                min = _arr[ i ];
-        }
-        return ( max - min );
-    } catch ( const std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-        return ( -1 );
-    }
-    return ( 0 );
+    return _size;
 }
 
 const char *Span::noSpaceInArray::what() const throw()
 {
-    return ( "Exceeded Array capacity" );
+    return ("Exception: Exceeded Array capacity");
+}
+
+const char *Span::noDiff::what() const throw()
+{
+    return ("Exception: No diff of numbers in array");
 }
 
 const char *Span::needsMoreElem::what() const throw()
 {
-    return ( "Only one or none elements to find longest/smallest Span" );
+    return ("Exception: Needs more elements to find longest/smallest Span");
 }

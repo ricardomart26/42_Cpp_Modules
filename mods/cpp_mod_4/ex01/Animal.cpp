@@ -33,12 +33,6 @@ std::string Animal::getType(void) const
 
 void Animal::makeSound(void) const
 {
-	if (_type.empty())
-		std::cout << "Im an Animal, but you dont know which one, Loser" << std::endl;
-	else if (!_type.compare("Dog"))
-		std::cout << "Ão Ão" << std::endl;
-	else if (!_type.compare("Cat"))
-		std::cout << "Miau" << std::endl;
 }
 
 void Animal::set_idea(const std::string &idea)

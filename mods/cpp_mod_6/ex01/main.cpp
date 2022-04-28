@@ -8,29 +8,22 @@
 
 uintptr_t serialize(Data* ptr)
 {
-	uintptr_t ser = reinterpret_cast<uintptr_t>(ptr);
-	return (ser);
+	return (reinterpret_cast<uintptr_t>(ptr));
 }
 
 Data* deserialize(uintptr_t raw)
 {
-	Data *ptr;
-
-	ptr = reinterpret_cast<Data *>(raw);
-	return (ptr);
+	return (reinterpret_cast<Data *>(raw));
 }
+
 
 int main(void)
 {
-	Data ptr;
-	uintptr_t uptr;
+	Data newone("Ricardo", 02);
+	uintptr_t uptr_s = serialize(&newone);
 
-	ptr.x = 1;
-	ptr.y = 2;
-	uptr = serialize(&ptr);
-	Data *newptr = deserialize(uptr);
+	Data *newone_ptr = deserialize(uptr_s);
+	std::cout << "name: " << newone_ptr->getName() << " age: " << newone_ptr->getAge() << std::endl;
 
-	std::cout << "x: " << newptr->x << " y: " << newptr->y << std::endl;
-	// delete newptr;
 	return (0);
 }

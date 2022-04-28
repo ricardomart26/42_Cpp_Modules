@@ -54,7 +54,10 @@ int main()
     geeloyal->equip(tmp_test);
     tmp_test = src_test->createMateria("cure");
     geeloyal->equip(tmp_test);
+    AMateria *save = dynamic_cast<Character *>(geeloyal)->getMateriaAddress(1);
+    geeloyal->unequip(1);
     delete tmp_test;
+    delete save;
 
     std::cout << std::endl;
     std::cout << "Testing the use function" << std::endl;
@@ -64,14 +67,6 @@ int main()
     geeloyal->use(2, *geeloyal);
     geeloyal->use(3, *geeloyal);
     geeloyal->use(4, *geeloyal);
-
-    std::cout << std::endl;
-    std::cout << "Testing the unequip function" << std::endl;
-    geeloyal->use(0, *geeloyal);
-    geeloyal->use(1, *geeloyal);
-    geeloyal->use(2, *geeloyal);
-    geeloyal->use(3, *geeloyal);
-    std::cout << "Done" << std::endl;
 
     // Testing assignment of Character
     std::cout << std::endl;

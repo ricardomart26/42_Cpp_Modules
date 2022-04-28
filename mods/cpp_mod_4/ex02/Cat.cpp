@@ -28,7 +28,7 @@ Cat & Cat::operator=(const Cat &obj)
 		return (*this);
 	Animal::operator=(obj);
 	// Brain::operator=(_my_brain);
-	_my_brain = obj._my_brain;
+	*_my_brain = *obj._my_brain;
 	return (*this);
 }
 
@@ -48,4 +48,3 @@ void Cat::makeSound(void) const
 {
 	std::cout << "Miau Miau" << std::endl;
 }
-

@@ -23,7 +23,11 @@ DiamondTrap::DiamondTrap()
 {
 	std::cout << "Diamond Trap initialized!" << std::endl;
 	setHit(FragTrap::getHit());
+	setHit(ScavTrap::getHit());
+	setAttack(FragTrap::getAttack());
+	setAttack(ScavTrap::getAttack());
 	setEnergy(ScavTrap::getEnergy());
+	setEnergy(FragTrap::getEnergy());
 	ClapTrap::setName("random_clap_name");
 	// setName(name);
 	_name = "random";
@@ -34,6 +38,7 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Frag
 	std::cout << "Diamond Trap initialized!" << std::endl;
 	setHit(FragTrap::getHit());
 	setEnergy(ScavTrap::getEnergy());
+	setAttack(FragTrap::getAttack());
 	ClapTrap::setName(name + "_clap_name");
 	// setName(name);
 	_name = name;

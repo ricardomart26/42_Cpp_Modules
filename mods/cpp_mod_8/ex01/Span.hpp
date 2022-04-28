@@ -7,29 +7,38 @@
 
 class Span 
 {
-
     public:
-        Span(int n);
+
+        Span(unsigned int n);
         Span(const Span &copy);
         ~Span();
-        Span    &operator = (const Span &rhs);
+        Span    &operator=(const Span &rhs);
         void    addNumber(int number);
-        int    shortestSpan();
-        int    longestSpan();
+        unsigned int    shortestSpan();
+        unsigned int    longestSpan();
+        int             size() const;
+        void            range_add(int *begin, int *end, unsigned int position);
 
         class noSpaceInArray : public std::exception
         {
             const char *what() const throw();
         };
+
         class needsMoreElem : public std::exception
         {
             const char *what() const throw();
         };
 
+        class noDiff : public std::exception
+        {
+            const char *what() const throw();
+        };
+
     private:
-        int _n;
+
+        unsigned int _n;
         int *_arr;
-        int _maxSize;
+        unsigned int _size;
 };
 
 #endif

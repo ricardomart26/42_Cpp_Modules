@@ -33,7 +33,7 @@ void	Brain::make_idea(const std::string &idea)
 	ideas[_size++ % 100] = idea;
 }
 
-const std::string	&Brain::get_idea(const int idx) const
+const std::string	&Brain::get_idea(const size_t idx) const
 {
 	return (ideas[idx]);
 }

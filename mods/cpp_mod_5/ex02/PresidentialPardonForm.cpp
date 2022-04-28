@@ -12,13 +12,6 @@ PresidentialPardonForm::~PresidentialPardonForm()
 	std::cout << "-- Class PresidentialPardonForm: Destroyed object " << _target << " --\n";
 }
 
-
-PresidentialPardonForm::~PresidentialPardonForm()
-{
-	std::cout << "-- Class PresidentialPardonForm: Destroyed object " << _target << " --\n";
-}
-
-
 PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPardonForm& rhs) 
 {
 	std::cout << "-- Class PresidentialPardonForm: Operator overloaded --\n";

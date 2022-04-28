@@ -1,4 +1,4 @@
-CC = clang++ -Wall -Werror -Wextra -pedantic -std=c++98 -fsanitize=address
+CC = c++ -Wall -Werror -Wextra -pedantic -std=c++98 -fsanitize=address
 
 NAME = arrays
 
@@ -6,12 +6,15 @@ SRC = main.cpp
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC) Makefile
 	$(CC) $(SRC) -o $(NAME)
 
 clean:
+	rm -rf *.o
+
+fclean: clean
 	test ! -e $(NAME) || rm $(NAME)
 
-re: clean all
+re: fclean all
 
-.PHONY: all clean re
+.PHONY: all fclean clean re

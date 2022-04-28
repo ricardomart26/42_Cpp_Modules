@@ -5,10 +5,7 @@
 
 class C : public Base
 {
-	public:
 
-		C();
-		virtual ~C();
 };
 
 #endif

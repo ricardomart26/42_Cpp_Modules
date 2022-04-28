@@ -4,16 +4,39 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
+void	wrong_animal_tests()
+{
+	// Tests without adding virtual, function will depend on
+	std::cout << std::endl;
+	std::cout << "Wrong Animal tests" << std::endl;
+
+	const WrongAnimal* wrongmeta = new WrongAnimal();
+
+	std::cout << std::endl;
+	std::cout << "wrongmeta type is " << wrongmeta->getType() << " " << std::endl;
+	std::cout << "wrongmeta sound is:" << std::endl;
+	wrongmeta->makeSound();
+	std::cout << std::endl;
+
+
+	const WrongAnimal* wrongcat = new WrongCat();
+	std::cout << "wrongcat type is " << wrongcat->getType() << " " << std::endl;
+	std::cout << "wrongcat sound is:" << std::endl;
+	wrongcat->makeSound();
+
+	std::cout << std::endl;
+	delete wrongcat;
+	delete wrongmeta;
+}
+
+
 int main(void)
 {
-	{	
+	{
 		const Animal* meta = new Animal();
 		const Animal* dogPtr = new Dog();
-		const Animal* copyPtr = new Animal(*dogPtr);
 		const Animal* catPtr = new Cat();
-		Animal* catPtr2 = new Cat();
 
-		*catPtr2 = *dogPtr;
 
 		
 		/**
@@ -24,14 +47,11 @@ int main(void)
 
 		std::cout << "type of dogPtr: " << dogPtr->getType() << " " << std::endl;
 		std::cout << "type of catPtr: " << catPtr->getType() << " " << std::endl;
-		std::cout << "type of copyPtr: " << copyPtr->getType() << " " << std::endl;
-		std::cout << "type of catPtr2: " << catPtr2->getType() << " " << std::endl;
+		std::cout << "type of meta: " << meta->getType() << " " << std::endl;
 
 
 		dogPtr->makeSound(); // will output the dog sound!
 		catPtr->makeSound(); // will output the cat sound!
-		copyPtr->makeSound();
-		catPtr2->makeSound();
 		meta->makeSound();
 		delete meta;
 
@@ -45,18 +65,11 @@ int main(void)
 		 */
 		delete dogPtr;
 		delete catPtr;
-		delete catPtr2;
-		delete copyPtr;
 	}
 	std::cout << std::endl;
 	std::cout << std::endl;
 	std::cout << std::endl;
 	{
-		WrongAnimal* WrongCatPtr = new WrongCat();
-
-		std::cout << "type of WrongCatPtr: " << WrongCatPtr->getType() << std::endl;
-		WrongCatPtr->makeSound();
-
-		delete WrongCatPtr;
+		wrong_animal_tests();
 	}
 }

@@ -1,26 +1,21 @@
 #include "MateriaSource.hpp"
-#include "AMateria.hpp"
 
 MateriaSource::MateriaSource()
 {
+	std::cout << "Class MateriaSource: Constructed!\n";
 	for (int i = 0; i < SIZE; i++)
 		_materia[i] = NULL;
 }
 
 MateriaSource::MateriaSource(const MateriaSource &copy)
 {
-	if (_materia[0] == NULL)
-	{
-
-	}
-	for (int i = 0; i < SIZE; i++)
-		delete this->_materia[i];
-	for (int i = 0; i < SIZE && copy._materia[i]; i++)
-		this->_materia[i] = copy._materia[i]->clone();
+	std::cout << "Class MateriaSource: Copied!\n";
+	*this = copy;
 }
 
 MateriaSource::~MateriaSource()
 {
+	std::cout << "Class MateriaSource: Destructed!\n";
 	for (int i = 0; i < SIZE; i++)
 		delete this->_materia[i];	
 }

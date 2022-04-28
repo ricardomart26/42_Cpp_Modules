@@ -14,7 +14,7 @@ class Brain
 		Brain &operator=(const Brain &obj);
 		
 		void	make_idea(const std::string &idea);
-		const std::string	&get_idea(const int idx) const;
+		const std::string	&get_idea(const size_t idx) const;
 	
 	private:
 

@@ -8,6 +8,7 @@ echo "Int Test:"
 ./convert 42
 ./convert 3
 ./convert 0
+./convert -0
 
 echo "float Test:"
 ./convert 423.af
@@ -17,6 +18,14 @@ echo "float Test:"
 ./convert 42.2453f
 ./convert 42.24.53f
 
+
+
+echo "float Test:"
+./convert 423.
+./convert a423.
+./convert 423.
+./convert 42.
+./convert 42.24.53
 
 echo "nanf/nan Test:"
 ./convert nan

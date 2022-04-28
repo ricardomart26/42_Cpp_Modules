@@ -7,10 +7,13 @@ int main(void)
 		{
 			Bureaucrat Ricardo("Ricardo0", 1);
 			std::cout << Ricardo;
+			throw 3;
 		}
 		catch (const std::exception &e)
 		{
 			std::cerr << e.what() << std::endl;
+		} catch (int x) {
+			std::cout << "Erro\n";
 		}
 
 		std::cout << "Grade too high testes\n\n";

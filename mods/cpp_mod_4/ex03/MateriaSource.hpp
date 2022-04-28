@@ -1,10 +1,10 @@
 #ifndef MATERIASOURCE_HPP
 #define MATERIASOURCE_HPP
 
-#include "AMateria.hpp"
 #include "IMateriaSource.hpp"
 #include <iostream>
 
+class Amateria;
 #define SIZE 4
 
 class MateriaSource : public IMateriaSource

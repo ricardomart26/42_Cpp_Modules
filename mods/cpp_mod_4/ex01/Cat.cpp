@@ -29,7 +29,7 @@ Cat & Cat::operator=(const Cat &obj)
 	Animal::operator=(obj);
 	// _type = obj._type;
 	// Brain::operator=(_my_brain);
-	_my_brain = obj._my_brain;
+	*_my_brain = *obj._my_brain;
 	return (*this);
 }
 

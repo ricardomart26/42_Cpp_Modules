@@ -33,9 +33,7 @@ std::string	WrongAnimal::getType(void) const
 
 void		WrongAnimal::makeSound(void) const
 {
-	if (_type.empty())
-		std::cout << "Im an WrongAnimal, but you dont know which one, Loser" << std::endl;
-	else
-		std::cout << "This is a Wrong Animal!" << std::endl;
 }
+
+
 
