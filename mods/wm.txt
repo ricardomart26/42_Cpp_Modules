@@ -1,3 +1,0 @@
-Module 02 - ex02 como fazer o numero ficar com mais que um numero decimal
-Module 04 - last one, faz sentido dar delete ao objeto antes de passar o conteudo do rhs?
-Module 06 - ex00 Falta copy constructor

@@ -1,6 +1,6 @@
 CC = c++ -Wall -Werror -Wextra -pedantic -std=c++98 -fsanitize=address
 
-NAME = arrays
+NAME = easyfind
 
 SRC = main.cpp
 

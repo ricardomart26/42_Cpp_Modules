@@ -35,10 +35,14 @@ Span   &Span::operator=(const Span &rhs)
 
 void    Span::addNumber(int number)
 {
-    if (_size >= _n)
-        throw noSpaceInArray();
-    _arr[_size] = number;
-    _size++;
+    try {
+        if (_size >= _n)
+            throw noSpaceInArray();
+        _arr[_size] = number;
+        _size++;
+    } catch (const std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 size_t abs_diff(int a, int b)
@@ -48,70 +52,92 @@ size_t abs_diff(int a, int b)
 
 unsigned int    Span::shortestSpan()
 {
-    if (_size < 2)
-        throw needsMoreElem();
-    size_t diff = SIZE_MAX;
-    for (size_t i = 0; i < _size; i++)
-    {
-        for (size_t  x = i + 1; x < _size; x++)
+    try {
+        int counter = 0;
+        if (_size < 2)
+            throw needsMoreElem();
+        size_t diff = SIZE_MAX;
+        for (size_t i = 0; i < _size; i++)
         {
-            if (_arr[i] == _arr[x])
-                continue ; 
-            if (diff > abs_diff(_arr[i], _arr[x]))
-                diff = abs_diff(_arr[i], _arr[x]);
-            if (diff == 1)
-                return (diff);
+            for (size_t  x = i + 1; x < _size; x++)
+            {
+                if (_arr[i] == _arr[x])
+                    continue ; 
+                if (diff > abs_diff(_arr[i], _arr[x]))
+                {
+                    counter++;
+                    diff = abs_diff(_arr[i], _arr[x]);
+                }
+                if (diff == 1)
+                    return (diff);
+            }
         }
+        if (counter == 0)
+            diff = 0;
+        if (diff == 0)
+            throw noDiff();
+        return (diff);
+    } catch (const std::exception &e) {
+        std::cout << e.what() << std::endl;
+        return (0);
     }
-    if (diff == 0)
-        throw noDiff();
-    return (diff);
 }
 
 unsigned int    Span::longestSpan()
 {
-    if (_size < 2)
-        throw needsMoreElem();
-    int min = _arr[0];
-    int max = _arr[0];
-    for (size_t i = 1; i < _size; i++)
-    {
-        if (_arr[i] > max)
-            max = _arr[i];
-        else if (_arr[i] < min)
-            min = _arr[i];
+    try {
+        if (_size < 2)
+            throw needsMoreElem();
+        int min = _arr[0];
+        int max = _arr[0];
+        std::cout << _arr[0] << std::endl;
+        for (size_t i = 1; i < _size; i++)
+        {
+            if (_arr[i] > max)
+                max = _arr[i];
+            else if (_arr[i] < min)
+                min = _arr[i];
+            std::cout << _arr[i] << std::endl;
+        }
+        if (max - min == 0)
+            throw noDiff();
+        return (max - min);
+    } catch (const std::exception &e) {
+        std::cout << e.what() << std::endl;
+        return (0);
     }
-    if (max - min == 0)
-        throw noDiff();
-    return (max - min);
 }
 
 void    Span::range_add(int *begin, int *end, unsigned int position)
 {
-    unsigned int diff = end - begin;
-    if (position >= _size)
-        std::cout << "Position not available inside array\n";
-    if (diff + _size > _n)
-        throw noSpaceInArray();
-    
-    if (position == _size - 1)
-    {
-        while (begin != end)
+    try {
+        if (end < begin)
+            throw ("Exception: Pointers begin or end not inside any array");
+        if (position > _size)
+            throw ("Exception: Position not available");
+        unsigned int diff = (end - begin) + 1;
+        if (diff + _size > _n)
+            throw noSpaceInArray();
+   
+        if (position == _size - 1)
         {
-            addNumber(*begin);
-            begin++;
+            while (begin != end)
+                addNumber(*(begin++));
+            _size += diff;
+            return ;
         }
         _size += diff;
-        return ;
-    }
-
-    _size += diff;
-    for (unsigned int i = position; begin != end; i++)
-    {
-        int temp = _arr[i];
-        _arr[i + diff] = temp;
-        _arr[i] = *begin;
-        begin++;
+        for (unsigned int i = position; begin != end + 1; i++)
+        {
+            int temp = _arr[i];
+            _arr[i + diff] = temp;
+            _arr[i] = *begin;
+            begin++;
+        }
+    } catch (const std::exception &e) {
+        std::cout << e.what() << std::endl;
+    } catch (const char *err) {
+        std::cout << err << std::endl;
     }
 }
 
